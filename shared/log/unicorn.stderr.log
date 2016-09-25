@@ -1,0 +1,85 @@
+I, [2016-09-25T16:30:30.485525 #3185]  INFO -- : Refreshing Gem list
+F, [2016-09-25T16:30:31.307166 #3185] FATAL -- : error adding listener addr=shared/sockets/unicorn.sock
+/home/uniclown/.rvm/gems/ruby-2.3.0/gems/unicorn-5.1.0/lib/unicorn/socket_helper.rb:131:in `bind_listen': Don't know how to bind: shared/sockets/unicorn.sock (ArgumentError)
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:231:in `listen'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:808:in `block in bind_new_listeners!'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:808:in `each'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:808:in `bind_new_listeners!'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/gems/unicorn-5.1.0/lib/unicorn/http_server.rb:130:in `start'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/gems/unicorn-5.1.0/bin/unicorn:126:in `<top (required)>'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/bin/unicorn:23:in `load'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/bin/unicorn:23:in `<main>'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `eval'
+	from /home/uniclown/.rvm/gems/ruby-2.3.0/bin/ruby_executable_hooks:15:in `<main>'
+I, [2016-09-25T16:38:28.906010 #3255]  INFO -- : Refreshing Gem list
+I, [2016-09-25T16:38:29.714795 #3255]  INFO -- : listening on addr=/home/uniclown/akagi/hello_app/shared/sockets/unicorn.sock fd=13
+I, [2016-09-25T16:38:29.714993 #3255]  INFO -- : listening on addr=0.0.0.0:3000 fd=14
+I, [2016-09-25T16:38:29.715054 #3255]  INFO -- : worker=0 spawning...
+I, [2016-09-25T16:38:29.715583 #3255]  INFO -- : worker=1 spawning...
+I, [2016-09-25T16:38:29.715978 #3255]  INFO -- : master process ready
+I, [2016-09-25T16:38:29.720715 #3264]  INFO -- : worker=0 spawned pid=3264
+I, [2016-09-25T16:38:29.720915 #3264]  INFO -- : worker=0 ready
+I, [2016-09-25T16:38:29.722610 #3266]  INFO -- : worker=1 spawned pid=3266
+I, [2016-09-25T16:38:29.722693 #3266]  INFO -- : worker=1 ready
+192.168.199.117 - - [25/Sep/2016:16:38:46 +0800] "GET / HTTP/1.1" 200 - 0.1704
+192.168.199.117 - - [25/Sep/2016:16:38:46 +0800] "GET /favicon.ico HTTP/1.1" 304 - 0.0587
+192.168.199.117 - - [25/Sep/2016:16:38:52 +0800] "GET / HTTP/1.1" 304 - 0.0027
+192.168.199.117 - - [25/Sep/2016:16:50:36 +0800] "GET / HTTP/1.1" 304 - 0.1136
+192.168.199.117 - - [25/Sep/2016:16:50:36 +0800] "GET /favicon.ico HTTP/1.1" 200 - 0.0007
+192.168.199.117 - - [25/Sep/2016:17:23:11 +0800] "GET / HTTP/1.1" 304 - 0.0050
+192.168.199.117 - - [25/Sep/2016:17:23:11 +0800] "GET /favicon.ico HTTP/1.1" 200 - 0.0008
+192.168.199.117 - - [25/Sep/2016:17:51:53 +0800] "GET / HTTP/1.1" 304 - 0.0022
+192.168.199.117 - - [25/Sep/2016:17:51:53 +0800] "GET /favicon.ico HTTP/1.1" 200 - 0.0007
+192.168.199.117 - - [25/Sep/2016:20:18:04 +0800] "GET / HTTP/1.1" 304 - 0.0637
+192.168.199.117 - - [25/Sep/2016:20:18:05 +0800] "GET /favicon.ico HTTP/1.1" 200 - 0.0013
+192.168.199.117 - - [25/Sep/2016:20:18:05 +0800] "GET / HTTP/1.1" 304 - 0.0616
+192.168.199.117 - - [25/Sep/2016:20:18:05 +0800] "GET /favicon.ico HTTP/1.1" 200 - 0.0008
+192.168.199.117 - - [25/Sep/2016:20:18:43 +0800] "GET /user HTTP/1.1" 404 22962 0.1159
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /users HTTP/1.1" 200 - 0.5232
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1 HTTP/1.1" 200 - 0.0202
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /application.self-af04b226fd7202dfc532ce7aedb95a0128277937e90d3b3a3d35e1cce9e16886.css?body=1 HTTP/1.1" 200 703 0.0174
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1 HTTP/1.1" 200 294200 0.0079
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1 HTTP/1.1" 200 21648 0.0099
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1 HTTP/1.1" 200 34719 0.0182
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /action_cable.self-1641ec3e8ea24ed63601e86efcca7f9266e09f390e82199d56aa7e4bd50e1aa9.js?body=1 HTTP/1.1" 200 18348 0.0054
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1 HTTP/1.1" 200 291 0.0091
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.1" 200 31 0.0069
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /application.self-b89234cf2659d7fedea75bca0b8d231ad7dfc2f3f57fcbaf5f44ed9dc384137b.js?body=1 HTTP/1.1" 200 662 0.0047
+192.168.199.117 - - [25/Sep/2016:20:18:51 +0800] "GET /scaffolds.self-b11feb6834b48982244c2a4d6afa2c5abc1daff990465d41158d153a8e3b225e.css?body=1 HTTP/1.1" 200 2436 0.2437
+192.168.199.117 - - [25/Sep/2016:20:19:08 +0800] "GET /users/new HTTP/1.1" 200 - 0.0753
+192.168.199.117 - - [25/Sep/2016:20:19:37 +0800] "POST /users HTTP/1.1" 302 - 0.1469
+192.168.199.117 - - [25/Sep/2016:20:19:37 +0800] "GET /users/1 HTTP/1.1" 200 - 0.0586
+192.168.199.117 - - [25/Sep/2016:20:19:40 +0800] "GET /users/1/edit HTTP/1.1" 200 - 0.0690
+192.168.199.117 - - [25/Sep/2016:20:19:41 +0800] "GET /users HTTP/1.1" 200 - 0.0322
+192.168.199.117 - - [25/Sep/2016:20:20:32 +0800] "GET /users/new HTTP/1.1" 200 - 0.0313
+192.168.199.117 - - [25/Sep/2016:20:20:42 +0800] "POST /users HTTP/1.1" 302 - 0.1139
+192.168.199.117 - - [25/Sep/2016:20:20:42 +0800] "GET /users/2 HTTP/1.1" 200 - 0.0201
+192.168.199.117 - - [25/Sep/2016:20:21:13 +0800] "GET /users/2/edit HTTP/1.1" 200 - 0.0254
+192.168.199.117 - - [25/Sep/2016:20:21:16 +0800] "GET /users HTTP/1.1" 200 - 0.0250
+192.168.199.117 - - [25/Sep/2016:20:21:19 +0800] "DELETE /users/2 HTTP/1.1" 302 - 0.0803
+192.168.199.117 - - [25/Sep/2016:20:21:19 +0800] "GET /users HTTP/1.1" 200 - 0.0232
+192.168.199.117 - - [25/Sep/2016:20:21:40 +0800] "GET /users/new HTTP/1.1" 200 - 0.0286
+192.168.199.117 - - [25/Sep/2016:20:21:48 +0800] "POST /users HTTP/1.1" 302 - 0.1101
+192.168.199.117 - - [25/Sep/2016:20:21:48 +0800] "GET /users/3 HTTP/1.1" 200 - 0.0268
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /users/3 HTTP/1.1" 200 - 0.0266
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /scaffolds.self-b11feb6834b48982244c2a4d6afa2c5abc1daff990465d41158d153a8e3b225e.css?body=1 HTTP/1.1" 304 - 0.0038
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /application.self-af04b226fd7202dfc532ce7aedb95a0128277937e90d3b3a3d35e1cce9e16886.css?body=1 HTTP/1.1" 304 - 0.0130
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1 HTTP/1.1" 304 - 0.0252
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1 HTTP/1.1" 304 - 0.0037
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1 HTTP/1.1" 304 - 0.0205
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1 HTTP/1.1" 304 - 0.0076
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /action_cable.self-1641ec3e8ea24ed63601e86efcca7f9266e09f390e82199d56aa7e4bd50e1aa9.js?body=1 HTTP/1.1" 304 - 0.0070
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1 HTTP/1.1" 304 - 0.0027
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1 HTTP/1.1" 304 - 0.0116
+192.168.199.117 - - [25/Sep/2016:20:22:14 +0800] "GET /application.self-b89234cf2659d7fedea75bca0b8d231ad7dfc2f3f57fcbaf5f44ed9dc384137b.js?body=1 HTTP/1.1" 304 - 0.0107
+192.168.199.117 - - [25/Sep/2016:20:22:20 +0800] "GET /users HTTP/1.1" 200 - 0.0371
+192.168.199.117 - - [25/Sep/2016:20:22:21 +0800] "GET /users/new HTTP/1.1" 200 - 0.0327
+192.168.199.117 - - [25/Sep/2016:20:22:26 +0800] "POST /users HTTP/1.1" 302 - 0.1026
+192.168.199.117 - - [25/Sep/2016:20:22:26 +0800] "GET /users/4 HTTP/1.1" 200 - 0.0201
+192.168.199.117 - - [25/Sep/2016:20:22:29 +0800] "GET /users HTTP/1.1" 200 - 0.0321
+192.168.199.117 - - [25/Sep/2016:20:22:45 +0800] "GET /users/new HTTP/1.1" 200 - 0.0641
+192.168.199.117 - - [25/Sep/2016:20:22:51 +0800] "POST /users HTTP/1.1" 302 - 0.0913
+192.168.199.117 - - [25/Sep/2016:20:22:51 +0800] "GET /users/5 HTTP/1.1" 200 - 0.0217
+192.168.199.117 - - [25/Sep/2016:20:22:53 +0800] "GET /users HTTP/1.1" 200 - 0.0309
+192.168.199.117 - - [25/Sep/2016:20:22:57 +0800] "DELETE /users/5 HTTP/1.1" 302 - 0.1335
+192.168.199.117 - - [25/Sep/2016:20:22:57 +0800] "GET /users HTTP/1.1" 200 - 0.0227
