@@ -1,7 +1,17 @@
+<div class="center jumbotron">
+    <h1>Welcome to the Sample App</h1>
+    <h2>
+        This is the home page for the Akagi Project
+    </h2>
+    <%= link_to "Sign up now!",signup_path, class:"btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("logo.png", alt:'Akagi logo'),
+            "#" %>
 <% provide(:title, "Home") %>
 <h1>StaticPages#home</h1>
 <head>
 <p>Find me in app/views/static_pages/home.html.erb</p>
-    <a href="http://www.railstutorial.ort/">Ruby on Rails Tutorial</a>
+    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
     sample application
 </p>
