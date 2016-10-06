@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 
               log_in @user
               session_params[:remember_me]== "1" ? remember(@user) : forget(@user)
-              redirect_to @user
+              redirect_back_or @user
       else
           flash.now[:danger] = "无效的用户名或者密码错误"
           render 'new'

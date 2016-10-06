@@ -10,6 +10,9 @@ gem 'puma', '3.4.0'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '3.3.6'
 gem 'sass-rails', '5.0.6'
+gem 'faker', '1.6.3'
+gem 'will_paginate', '3.1.0'
+gem 'bootstrap-will_paginate', '0.0.10'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '3.0.0'
 gem 'bcrypt', '3.1.11'
