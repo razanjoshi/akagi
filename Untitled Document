@@ -1,0 +1,2 @@
+
+undefined method `default_url_option=' for ActionMailer::Base:Class Did you mean? default_url_options= default_url_options default_url_options? default_options=

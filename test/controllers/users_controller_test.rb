@@ -4,6 +4,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     def setup
         @user = users(:Michael)
         @other_user = users(:Noel)
+        @unactivated_user = users(:Tsubaki)
     end
 
     test "should redirect index when not logged in" do
@@ -14,6 +15,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
     get signup_path
     assert_response :success
+  end
+
+  test "should redirect index when not activate" do
+      log_in_as(@user)
+      get user_path(@unactivated_user)
+      assert_redirected_to root_url
   end
 
   test "your editing should not pass before login" do
@@ -49,7 +56,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         @other_user.reload
         assert_not @other_user.admin?
   end
-  
+
   test "should redirect destroy when not logged in " do
       assert_no_difference 'User.count' do
           delete user_path(@user)
