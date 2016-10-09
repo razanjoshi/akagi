@@ -6,7 +6,8 @@ class StaticPagesController < ApplicationController
       end
   end
 
-  def help
+  def bar
+      @feed_items = User.first.feed.paginate(page: params[:page])
   end
 
   def about
