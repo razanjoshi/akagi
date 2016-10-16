@@ -47,6 +47,10 @@ class User < ApplicationRecord
         update_attribute(:remember_digest, nil)
     end
 
+    def authorize
+
+    end
+
 
     def activate
         update_columns(activated:true,activated_at:Time.zone.now)
@@ -92,7 +96,7 @@ class User < ApplicationRecord
 
 
         def downcase_email
-            self.email.downcase!
+            self.email.downcase! unless self.email.nil?
         end
 
         def create_activation_digest

@@ -1,33 +1,89 @@
-# Ruby on Rails Tutorial
+# Akagi Project on Ruby On Rails
 
-## "hello,world"
+## 概述
 
-This is the first application for the Project Akagi
-by UniClown. Hello,World!
-
-## Getting started
-
-To get started with the app, clone the repo and then install the needed gems:
-
-```
-$ bundle install --without production
-
-Next, migrate the database:
-
-```
-$ rails db:migrate
-```
-
-Finally, run the test suite to verify that everything is working correctly:
-
-```
-$ rails test
-```
-
-if the test suite passes,you'll ready to run the app in a local server:
-
-```
-$ rails server
-```
+经历第二次冲击以后，为了防范于未然成立的第三新UniClown;World
+简而言之就是我的个人网站UniClown.com的程序
+虽然现在只是一个最简单的基于ROR的微博系统
+但是最终将成为YggDraSil系统的一环
+而我之所以学习CODING，不断的掌握各种技术，主要目的是为了完成YggDraSil系统
+Akagi Project只是这个系统的第一步
 
 
+## YggDraSil系统
+YggDraSil 即 世界之树
+世界即我，我即世界
+它的存在形式，目前来说最接近于个人云
+但是理想中应该是J.A.R.V.I.S.一样的存在
+知晓并处理关于我的一切的人工智能系统
+然而就我目前的知识量和技能完全不可能达成
+所以，不管是现在这一步，
+还是今后的每一步，
+都希望能朝着这个目标前进
+
+## Akagi Project 意义
+Akagi 取自 赤木 茂『黑暗中降临的天才』
+赤木那种『只有赌上自己的一切，才有胜利的可能性』的不要命活法感染了我
+就如同破釜成舟一样的意义，希望能推动自己前进
+
+## Akagi Project 第一阶段
+本项目第一阶段是Ruby on Rails的学习过程
+或者说是开发工具的学习过程
+git做版本管理
+linux做开发环境
+heroku做网站部署
+对已经学到的技术重新认识和对新的技术慢慢了解的过程
+于2016年10月完成第一阶段
+网站上线后只有邮箱注册登录和发表微博的基础功能
+
+## Akagi Project 第二阶段
+本项目现在所在的位置
+这个阶段将进行自主开发
+补充和完善项目功能
+复习和掌握之前学到的技术
+
+### 1号模块 社交登陆
+通过微博或者微信登陆而省去邮箱注册的模块
+
+### 2号模块 markdown转义
+可以读取markdown语言转化为html语言，显示为博文形式
+
+### 3号模块 微博资源不再是微博资源
+虽然项目基础是一个社交网站
+但实际上这个网站并不会成为标准的社交形式
+准确来说用户只有我一个，社交功能只是作为基础而存在
+所以发表的内容也应该不只是140字的文字及至多一张图片的形式
+但也不会是普通的博客文章形式
+也不是可长可短的轻微博形式
+更像是论坛的帖子形式
+涉及到我自己对话题的更新，别人对话题的评论
+类似百科的词条、页面
+但是如果每个PO都是词条，那也很奇怪
+用tag来收束，然后管理tag
+建立一个tag词条，每个post都有tag,tag有上下级分类
+
+10.16
+重新引入4号模块条目资源
+取消tag设计
+让每条post都在某个条目下发言
+post belongs_to 条目
+条目 has_many post
+
+### 4号模块 条目资源
+条目即类似tag,cat,话题的概念，更接近维基的条目
+可以是一个项目
+可以是一个计划
+可以是一部作品
+可以是一个活动
+不管是什么
+1.有个名字
+2.创建日期
+3.修改日期（）
+4.具体（关联性）？？  设计父类，执行评论操作的时候，如果有父类，自动关联到父类
+5.创建人
+6.状态 准备中，活动中，已结束
+控制器动作
+new      发起条目
+create   创建条目
+delete   删除条目
+edit     编辑条目

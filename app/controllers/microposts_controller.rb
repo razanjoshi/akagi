@@ -4,8 +4,10 @@ class MicropostsController < ApplicationController
 
     def create
         @micropost = current_user.microposts.build(micropost_params)
-
         if @micropost.save
+            if params[:weibo][:post] == "yes"
+                @micropost.picture.nil? ? weibo_post(params) : weibo_upload(params)
+            end
             flash[:success] = "发表成功!"
             redirect_to root_url
         else

@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+
   def home
       if logged_in?
           @micropost = current_user.microposts.build
@@ -7,12 +8,17 @@ class StaticPagesController < ApplicationController
   end
 
   def bar
-      @feed_items = User.first.feed.paginate(page: params[:page])
+      @feed_items = Micropost.all.paginate(page: params[:page])
   end
 
   def about
+      @content = markdown('md/loveletter.md')
   end
 
   def contact
   end
+
+
+
+
 end

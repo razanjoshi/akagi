@@ -6,6 +6,9 @@ class Micropost < ApplicationRecord
   mount_uploader :picture, PictureUploader
   validate :picture_size
 
+
+
+
   private
 
 

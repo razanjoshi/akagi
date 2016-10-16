@@ -27,6 +27,25 @@ class UsersController < ApplicationController
       end
   end
 
+  def authorize
+      json = weibo_gettoken(params[:code])
+      session[:access_token] = json['access_token']
+      @user = User.find_by(weibo:json['uid'])
+      if @user
+          log_in @user
+          redirect_back_or @user
+      else
+          @user = User.new(weibo:json['uid'])
+          json = weibo_userinfo(@user)
+          @user.name = json['name']
+          @user.save(validate: false)
+          log_in @user
+          redirect_back_or @user
+      end
+  end
+
+
+
   def edit
       @user = User.find(params[:id])
   end

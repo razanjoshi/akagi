@@ -1,8 +1,12 @@
-<%= form_for(@micropost, html:{ mulitpart: true }) do |f| %>
+<%= form_for(@micropost, html:{ mulitpart: true },enctyped:"multipart/form-data") do |f| %>
     <%= render 'shared/error_messages', object:f.object %>
     <div class="field">
         <%= f.text_area :content, placeholder:"Compose new micropost..." %>
     </div>
+    <%= label :weibo, class:"checkbox inline" do%>
+        <%= check_box "weibo","post",{},"yes","no" %>
+        <span>同步到微博</span>
+        <% end %>
     <%= f.submit "Post", class:"btn btn-primary" %>
     <span class="picture">
         <%= f.file_field :picture, accept:'image/jpeg,image/gif,image/png' %>
