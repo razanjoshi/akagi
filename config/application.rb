@@ -1,10 +1,6 @@
 require_relative 'boot'
 
-class Object
-    def method_missing(m, *args, &block)
-        puts "Called #{m} with #{args.inspect} and #{block}"
-    end
-end
+
 
 
 require 'rails/all'
