@@ -1,5 +1,8 @@
 module ApplicationHelper
-
+    @@pipeline = HTML::Pipeline.new [
+      HTML::Pipeline::MarkdownFilter,
+      HTML::Pipeline::SyntaxHighlightFilter
+    ]
 
     #根据所在的页面返回完整的标题
     def full_title(page_title = '')
@@ -11,17 +14,17 @@ module ApplicationHelper
         end
     end
 
-
-    def markdown (filename)
-        pipeline = HTML::Pipeline.new [
-          HTML::Pipeline::MarkdownFilter,
-          HTML::Pipeline::SyntaxHighlightFilter
-        ]
+    def fileread(filename)
         file = File.open(filename,'r')
             content = file.read
         file.close
-        pipeline.call(content)[:output]
+        return markdown(content)
     end
+
+    def markdown (content)
+        @@pipeline.call(content)[:output]
+    end
+
 
     def weibo_gettoken(code)
         params = {client_id:"2957192072",

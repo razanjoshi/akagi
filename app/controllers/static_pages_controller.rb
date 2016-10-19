@@ -4,15 +4,17 @@ class StaticPagesController < ApplicationController
       if logged_in?
           @micropost = current_user.microposts.build
           @feed_items = current_user.feed.paginate(page: params[:page])
+          store_location
       end
   end
 
   def bar
-      @feed_items = Micropost.all.paginate(page: params[:page])
+      @cases = Case.all
+
   end
 
   def about
-      @content = markdown('md/loveletter.md')
+      @content = fileread('md/loveletter.md')
   end
 
   def contact

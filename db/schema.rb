@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161010125948) do
+ActiveRecord::Schema.define(version: 20161018090128) do
+
+  create_table "cases", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "updated_at"], name: "index_cases_on_user_id_and_updated_at"
+    t.index ["user_id"], name: "index_cases_on_user_id"
+  end
+
+  create_table "caseships", force: :cascade do |t|
+    t.integer  "father_id"
+    t.integer  "sub_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["father_id", "sub_id"], name: "index_caseships_on_father_id_and_sub_id", unique: true
+    t.index ["father_id"], name: "index_caseships_on_father_id"
+    t.index ["sub_id"], name: "index_caseships_on_sub_id"
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -18,6 +38,8 @@ ActiveRecord::Schema.define(version: 20161010125948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "picture"
+    t.integer  "case_id"
+    t.index ["case_id"], name: "index_microposts_on_case_id"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end

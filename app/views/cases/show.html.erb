@@ -1,0 +1,16 @@
+<% provide(:title, @case.title) %>
+<div class="row">
+    <aside class="col-md-4">
+        <%= sanitize markdown(@case.body).to_s %>
+    </aside>
+    <div class="col-md-8">
+        <h1><%= @case.title%></h1>
+        <span class="edit">
+        <% if current_user?(@case.user) %>
+            <%=  link_to"edit",edit_case_path(@case)  %>|<%=  link_to"delete",@case,method: :delete,data:{confirm:"我再确认一遍，你是否需要删除"}  %>
+        <% end %>
+        </span>
+        <%= render 'shared/micropost_form' %>
+        <%= render 'shared/feed'  %>
+    </div>
+</div>

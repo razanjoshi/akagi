@@ -1,23 +1,108 @@
 <%= form_for(@micropost, html:{ mulitpart: true },enctyped:"multipart/form-data") do |f| %>
     <%= render 'shared/error_messages', object:f.object %>
-    <div class="field">
+    <div id="editormd">
+        <%= f.label :body %>
         <%= f.text_area :content, placeholder:"Compose new micropost..." %>
+
     </div>
-    <%= label :weibo, class:"checkbox inline" do%>
-        <%= check_box "weibo","post",{},"yes","no" %>
-        <span>同步到微博</span>
-        <% end %>
+    <script type="text/javascript">
+            $(function() {
+                var Editor = editormd("editormd", {
+                    placeholder: "吐槽点什么..",
+                    syncScrolling : "single",
+                    height:400,
+                    path : "    /editormdlib/",
+                    toolbarIcons : function() {
+                        return ["image","watch","fullscreen"]
+                    },
+
+                    watch:false,
+                    imageUpload : true,
+                    imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+                    imageUploadURL : "./php/upload.php?test=dfdf",
+
+                });
+            /*
+            // or
+            var editor = editormd({
+                id   : "editormd",
+                path : "../lib/"
+            });
+            */
+        });
+    </script>
+    <%= hidden_field_tag  :case_id, @case.nil?? '1': @case.id %>
+
+
+
     <%= f.submit "Post", class:"btn btn-primary" %>
-    <span class="picture">
-        <%= f.file_field :picture, accept:'image/jpeg,image/gif,image/png' %>
-    </span>
+
 <% end %>
 
-<script type="text/javascript">
-$('#micropost_picture').bind('change',function(){
-        var size_in_megabytes = this.files[0].size/1024/1024;
-        if (size_in_megabytes >5){
-            alert('maximum file size is 5MB.Please choose a smaller file.');
-        }
-    });
+<details>
+<summary>图片上传</summary>
+<div class="container kv-main">
+
+            <form enctype="multipart/form-data">
+                <div class="form-group">
+                    <input id="smfile" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-max-file-count="10" name="smfile" accept="image/*">
+                </div>
+            </form>
+            <div id="showurl" style="display: none;">
+                <ul id="navTab" class="nav nav-tabs">
+                    <li class="active"><a href="#urlcodes" data-toggle="tab">URL</a></li>
+                    <li><a href="#htmlcodes" data-toggle="tab">HTML</a></li>
+                    <li><a href="#bbcodes" data-toggle="tab">BBCode</a></li>
+                    <li><a href="#markdowncodes" data-toggle="tab">Markdown</a></li>
+                    <li><a href="#deletepanel" data-toggle="tab">Delete Link</a></li>
+                </ul>
+                <div id="navTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="urlcodes">
+                        <pre style="margin-top: 5px;"><code id="urlcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="htmlcodes">
+                        <pre style="margin-top: 5px;"><code id="htmlcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="bbcodes">
+                        <pre style="margin-top: 5px;"><code id="bbcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="markdowncodes">
+                        <pre style="margin-top: 5px;"><code id="markdown"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="deletepanel">
+                        <pre style="margin-top: 5px;"><code id="deletecode"></code></pre>
+                    </div>
+                </div>
+            </div>
+        <script>
+        $("#smfile").fileinput({
+            uploadUrl: 'https://sm.ms/api/upload?inajax=1&ssl=1',
+            allowedFileExtensions : ['jpeg', 'jpg', 'png', 'gif', 'bmp'],
+            overwriteInitial: false,
+            maxFileSize: 5120,
+            maxFilesNum: 10,
+        });
+        $('#smfile').on('fileuploaded', function(event, data, previewId, index) {
+            var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
+            if(response.code == 'success') {
+                if ( $("showurl").css("display") ) {
+                    $('#urlcode').append(response.data.url + "\n");
+                    $('#htmlcode').append("&lt;img src=\""+ response.data.url +"\" alt=\""+ files[index].name +"\" title=\""+ files[index].name +"\" /&gt;" + "\n");
+                    $('#bbcode').append("[img]"+ response.data.url +"[/img]" + "\n");
+                    $('#markdown').append("!["+ files[index].name +"](" + response.data.url + ")" + "\n");
+                    $('#deletecode').append(response.data.delete + "\n");
+
+                } else if (response.data.url) {
+                    $("#showurl").show();
+                    $('#urlcode').append(response.data.url + "\n");
+                    $('#htmlcode').append("&lt;img src=\""+ response.data.url +"\" alt=\""+ files[index].name +"\" title=\""+ files[index].name +"\" /&gt;" + "\n");
+                    $('#bbcode').append("[img]"+ response.data.url +"[/img]" + "\n");
+                    $('#markdown').append("!["+ files[index].name +"](" + response.data.url + ")" + "\n");
+                    $('#deletecode').append(response.data.delete + "\n");
+                }
+            }
+        });
+        </script>
+    </div>
 </script>
+</details>

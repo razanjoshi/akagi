@@ -1,0 +1,41 @@
+<% provide(:title,'编辑POST')%>
+<h1>
+    编辑POST
+</h1>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <%= form_for (@micropost) do |f| %>
+            <% render'shared/error_messages', object: f.object %>
+
+            <div id="editormd">
+                <%= f.label :content %>
+                <%= f.text_area :content, class: 'form-control',style:"display:none;" %>
+
+            </div>
+            <script type="text/javascript">
+                    $(function() {
+                        var Editor = editormd("editormd", {
+                            height  : 640,
+                            syncScrolling : "single",
+                            path : "    /editormdlib/"
+                        });
+                    /*
+                    // or
+                    var editor = editormd({
+                        id   : "editormd",
+                        path : "../lib/"
+                    });
+                    */
+                });
+            </script>
+
+            <%= f.submit "编辑提交", class:"btn btn-primary" %>
+
+        <% end %>
+
+    </div>
+
+</div>
