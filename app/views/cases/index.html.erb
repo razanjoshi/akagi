@@ -2,6 +2,10 @@
 <h1>ALL CASES</h1>
 
 <ul class="users">
-        <%= link_to Case.last.title,Case.last %> => <%= link_to "新建子类",new_case_path+"?father_id=1" %>
+    <%= if Case.last.nil? %>
+        <%= link_to "新建事件",new_case_path %>
+    <% else %>
+        <%= link_to Case.last.title,Case.last %> => <%= link_to "新建事件",new_case_path+"?father_id=1" %>
         <%= render partial: "case", collection: Case.last.sub_cases, as: :thiscase %>
+    <% end %>
 </ul>
