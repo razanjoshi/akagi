@@ -3,7 +3,7 @@ class Case < ApplicationRecord
     has_one :active_caseships, class_name: "Caseship",foreign_key:"sub_id",dependent: :destroy
     has_one :father_case, through: :active_caseships, source: :father
     has_many :passive_caseships, class_name: "Caseship", foreign_key:"father_id",dependent: :destroy
-    has_many :sub_cases, through: :passive_caseships, source: :sub_test2
+    has_many :sub_cases, through: :passive_caseships, source: :sub
 
 
 

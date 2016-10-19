@@ -10,8 +10,9 @@ class CasesController < ApplicationController
 
 
   def index
-
-
+      if Case.last.nil?
+          Case.create! title:"闲谈",user_id:current_user.id
+      end
   end
 
 

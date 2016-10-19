@@ -1,5 +1,5 @@
 <li>
-<%= link_to thiscase.title, case_path(thiscase) %>  =><%= link_to "buil new", new_case_path+"?father_id=#{thiscase.id}" %>
+<%= link_to thiscase.title, case_path(thiscase) %>  =><%= link_to "buid new", new_case_path+"?father_id=#{thiscase.id}" %>
 <ul>
     <%= render partial: "case", collection: thiscase.sub_cases, as: :thiscase %>
 </ul>
