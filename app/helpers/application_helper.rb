@@ -21,7 +21,6 @@ module ApplicationHelper
     def markdown (content)
         pipeline = HTML::Pipeline.new [
           HTML::Pipeline::MarkdownFilter,
-          HTML::Pipeline::SyntaxHighlightFilter
         ]
         pipeline.call(content)[:output]
     end
