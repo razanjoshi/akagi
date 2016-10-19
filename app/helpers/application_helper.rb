@@ -30,7 +30,7 @@ module ApplicationHelper
         params = {client_id:"2957192072",
                           client_secret:"55874c06581fcc40e9d083c15f984197",
                           grant_type:"authorization_code",
-                          redirect_uri:"http://192.168.199.247:3000/login/authorized",
+                          redirect_uri:"http://uniclown.com/login/authorized",
                           code:code
                           }
         uri = URI("https://api.weibo.com/oauth2/access_token")

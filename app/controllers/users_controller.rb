@@ -31,6 +31,10 @@ class UsersController < ApplicationController
       json = weibo_gettoken(params[:code])
       session[:access_token] = json['access_token']
       @user = User.find_by(weibo:json['uid'])
+      if json['uid'].nil?
+          flash[:info] = "有点不好使，请联系我"
+          redirect_to login_path
+      end
       if @user
           log_in @user
           redirect_back_or @user
