@@ -6,6 +6,6 @@
         <%= link_to "新建事件",new_case_path %>
     <% else %>
         <%= link_to Case.last.title,Case.last %> => <%= link_to "新建事件",new_case_path+"?father_id=1" %>
-        <%= render partial: "case", collection: Case.last.sub_cases, as: :thiscase %>
+
     <% end %>
 </ul>
