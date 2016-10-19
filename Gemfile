@@ -36,19 +36,19 @@ gem 'jbuilder', '2.4.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem "rinku",              "~> 1.7",   :require => false
+gem "gemoji",             "~> 2.0",   :require => false
+gem "RedCloth",           "~> 4.2.9", :require => false
+gem "github-markdown",    "~> 0.5",   :require => false
+gem "email_reply_parser", "~> 0.5",   :require => false
+gem "sanitize",           "~> 2.0",   :require => false
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '1.3.11'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
       gem 'byebug', '9.0.0', platform: :mri
-      gem "rinku",              "~> 1.7",   :require => false
-    gem "gemoji",             "~> 2.0",   :require => false
-    gem "RedCloth",           "~> 4.2.9", :require => false
-    gem "github-markdown",    "~> 0.5",   :require => false
-    gem "email_reply_parser", "~> 0.5",   :require => false
-    gem "sanitize",           "~> 2.0",   :require => false
+
 
     if RUBY_VERSION < "2.1.0"
       gem "escape_utils",     "~> 0.3",   :require => false

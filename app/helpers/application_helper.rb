@@ -1,8 +1,5 @@
 module ApplicationHelper
-    @@pipeline = HTML::Pipeline.new [
-      HTML::Pipeline::MarkdownFilter,
-      HTML::Pipeline::SyntaxHighlightFilter
-    ]
+
 
     #根据所在的页面返回完整的标题
     def full_title(page_title = '')
@@ -22,7 +19,11 @@ module ApplicationHelper
     end
 
     def markdown (content)
-        @@pipeline.call(content)[:output]
+        pipeline = HTML::Pipeline.new [
+          HTML::Pipeline::MarkdownFilter,
+          HTML::Pipeline::SyntaxHighlightFilter
+        ]
+        pipeline.call(content)[:output]
     end
 
 
