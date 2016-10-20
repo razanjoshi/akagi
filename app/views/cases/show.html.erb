@@ -10,7 +10,9 @@
             <%=  link_to"edit",edit_case_path(@case)  %>|<%=  link_to"delete",@case,method: :delete,data:{confirm:"我再确认一遍，你是否需要删除"}  %>
         <% end %>
         </span>
-        <%= render 'shared/micropost_form' %>
+        <% if logged_in? %>
+            <%= render 'shared/micropost_form' %>
+        <% end %>
         <%= render 'shared/feed'  %>
     </div>
 </div>

@@ -10,8 +10,9 @@ class CasesController < ApplicationController
 
 
   def index
-      if Case.last.nil?
-          Case.create! title:"闲谈",user_id:current_user.id
+      @case = Case.last
+      if @case.nil?
+          @case = Case.create! title:"闲谈",user_id:current_user.id
       end
   end
 
@@ -74,7 +75,6 @@ class CasesController < ApplicationController
 
     def bangumi(newcase,bgm_url)
         #发送get请求到bgmurl
-        puts "==============="
         url = URI(bgm_url)
         body = Net::HTTP.get(url)
         body = Nokogiri::HTML(body)

@@ -6,13 +6,10 @@
         <% if current_user?(micropost.user) %>
         <%= link_to "edit",edit_micropost_path(micropost) %>|
         <%= link_to "delete",micropost,method: :delete,
-                    data:{ confirm:"You suer?"} %>
+                    data:{ confirm:"我再和你确认一遍，#{current_user.name}，你是否要删除这条微博"} %>
         <% end %>
     </span>
-    <span class="content" ><%= sanitize markdown(micropost.content).to_s[0..500] %>
-
-                    <%= image_tag micropost.picture.url if micropost.picture? %>
-        </span>
+    <span class="content" ><%= sanitize markdown(micropost.content).to_s %></span>
 
 
 </li>

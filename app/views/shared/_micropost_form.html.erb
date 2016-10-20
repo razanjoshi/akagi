@@ -10,16 +10,13 @@
                 var Editor = editormd("editormd", {
                     placeholder: "吐槽点什么..",
                     syncScrolling : "single",
-                    height:400,
+                    height:200,
                     path : "    /editormdlib/",
                     toolbarIcons : function() {
                         return ["image","watch","fullscreen"]
                     },
 
                     watch:false,
-                    imageUpload : true,
-                    imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                    imageUploadURL : "./php/upload.php?test=dfdf",
 
                 });
             /*

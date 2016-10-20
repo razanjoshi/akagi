@@ -1,6 +1,10 @@
-<% provide(:title,"All CASES") %>
-<h1>ALL CASES</h1>
+<% provide(:title,"YggDraSil") %>
+<h1>YggDraSil</h1>
 
 <ul>
-        <%= render partial: "case", collection: Case.all, as: :thiscase %>
+    <li><%= link_to @case.title, case_path(@case) %>  =><%= link_to "buid new", new_case_path+"?father_id=#{@case.id}" %></li>
+        <ul>
+            <%= render partial: "case", collection: @case.sub_cases, as: :thiscase %>
+        </ul>
+
 </ul>
