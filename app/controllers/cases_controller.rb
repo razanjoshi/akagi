@@ -10,7 +10,7 @@ class CasesController < ApplicationController
 
 
   def index
-      @case = Case.last
+      @case = Case.find(1)
       if @case.nil?
           @case = Case.create! title:"闲谈",user_id:current_user.id
       end

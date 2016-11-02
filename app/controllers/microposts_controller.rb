@@ -9,7 +9,7 @@ class MicropostsController < ApplicationController
         if @micropost.save
 
                 #@micropost.picture.nil? ? weibo_post(params) : weibo_upload(params)
-
+                @micropost.case.update_attribute(:updated_at,Time.zone.now)
             flash[:success] = "发表成功!"
             redirect_back_or root_url
         else

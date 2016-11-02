@@ -18,13 +18,14 @@
                             <p class="body"><%=sanitize markdown(thecase.body).to_s[0..450]%></p>
                             <span  class="microposts">
                                 <ul class="microposts">
-                                    <%= render thecase.microposts %>
+                                    <%= render thecase.microposts[0..2] %>
                                 </ul>
                             </span>
 
                     </li>
                     </div>
                 <% end %>
+                <%= will_paginate @cases %>
         </ul>
 
     </div>
