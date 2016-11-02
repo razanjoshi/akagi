@@ -26,6 +26,7 @@ class MicropostsController < ApplicationController
     def update
         @micropost = current_user.microposts.find_by(id: params[:id])
         if @micropost.update_attributes(micropost_params)
+            @micropost.case.update_attribute(:updated_at,Time.zone.now)
             flash[:success] = "更新成功，请继续履行救世主的义务"
             redirect_to root_url
         else
