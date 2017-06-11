@@ -1,0 +1,13 @@
+<%= render partial: 'cpanel/public/header', locals: { str: 'cases' } %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render partial: 'sidebar' %>
+		<div class="col-sm-9 col-md-10 main">
+		  <div class="main-hd">
+		    <h5>新的案件</h5>
+		  </div>
+		  <%= render partial: 'form', locals: { thecase: @case }%>
+		</div>
+	</div>
+</div>

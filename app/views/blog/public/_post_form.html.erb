@@ -1,0 +1,147 @@
+<%= form_for([:blog, post]) do |f| %>
+    <div id="editormd">
+        <%= f.label :body %>
+        <%= f.text_area :content, placeholder:"Compose new micropost..." %>
+
+    </div>
+    <script type="text/javascript">
+    $(function() {
+       var testEditor = editormd("editormd", {
+           width: "100%",
+           height: 300,
+           path : '    /editormdlib/',
+           watch : false,
+           toolbarIcons : function() {
+               // Or return editormd.toolbarModes[name]; // full, simple, mini
+               // Using "||" set icons align right.
+               return ["undo", "redo", "|", "bold", "hr", "|", "testIcon",  "faicon", "||", "watch", "fullscreen", "preview"]
+           },
+           // toolbarIcons : "full", // You can also use editormd.toolbarModes[name] default list, values: full, simple, mini.
+           toolbarIconsClass : {
+               testIcon : "fa-gears"  // 指定一个FontAawsome的图标类
+           },
+
+           // 用于增加自定义工具栏的功能，可以直接插入HTML标签，不使用默认的元素创建图标
+           toolbarCustomIcons : {
+               file   : "<input type=\"file\" accept=\".md\" />",
+               faicon : "<i class=\"fa fa-star\" onclick=\"alert('faicon');\"></i>"
+           },
+
+           // 自定义工具栏按钮的事件处理
+           toolbarHandlers : {
+               /**
+                * @param {Object}      cm         CodeMirror对象
+                * @param {Object}      icon       图标按钮jQuery元素对象
+                * @param {Object}      cursor     CodeMirror的光标对象，可获取光标所在行和位置
+                * @param {String}      selection  编辑器选中的文本
+                */
+               testIcon : function(cm, icon, cursor, selection) {
+
+                   //var cursor    = cm.getCursor();     //获取当前光标对象，同cursor参数
+                   //var selection = cm.getSelection();  //获取当前选中的文本，同selection参数
+
+                   // 替换选中文本，如果没有选中文本，则直接插入
+                   cm.replaceSelection("[" + selection + ":testIcon]");
+
+                   // 如果当前没有选中的文本，将光标移到要输入的位置
+                   if(selection === "") {
+                       cm.setCursor(cursor.line, cursor.ch + 1);
+                   }
+
+                   // this == 当前editormd实例
+                   console.log("testIcon =>", this, cm, icon, cursor, selection);
+               },
+
+           },
+
+           lang : {
+               toolbar : {
+                   file : "上传文件",
+                   testIcon : "自定义按钮testIcon",  // 自定义按钮的提示文本，即title属性
+                   testIcon2 : "自定义按钮testIcon2",
+                   undo : "撤销 (Ctrl+Z)"
+               }
+           },
+
+           onload : function(){
+               $("[type=\"file\"]").bind("change", function(){
+                   alert($(this).val());
+                   testEditor.cm.replaceSelection($(this).val());
+                   console.log($(this).val(), testEditor);
+               });
+           }
+       });
+   });
+
+    </script>
+    <%= f.hidden_field :case_id, value:post.case_id %>
+    <%= f.submit "Post", class:"btn btn-primary" %>
+<% end %>
+
+<details>
+<summary>图片上传</summary>
+<div class="container kv-main">
+
+            <form enctype="multipart/form-data">
+                <div class="form-group">
+                    <input id="smfile" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-max-file-count="10" name="smfile" accept="image/*">
+                </div>
+            </form>
+            <div id="showurl" style="display: none;">
+                <ul id="navTab" class="nav nav-tabs">
+                    <li class="active"><a href="#urlcodes" data-toggle="tab">URL</a></li>
+                    <li><a href="#htmlcodes" data-toggle="tab">HTML</a></li>
+                    <li><a href="#bbcodes" data-toggle="tab">BBCode</a></li>
+                    <li><a href="#markdowncodes" data-toggle="tab">Markdown</a></li>
+                    <li><a href="#deletepanel" data-toggle="tab">Delete Link</a></li>
+                </ul>
+                <div id="navTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="urlcodes">
+                        <pre style="margin-top: 5px;"><code id="urlcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="htmlcodes">
+                        <pre style="margin-top: 5px;"><code id="htmlcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="bbcodes">
+                        <pre style="margin-top: 5px;"><code id="bbcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="markdowncodes">
+                        <pre style="margin-top: 5px;"><code id="markdown"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="deletepanel">
+                        <pre style="margin-top: 5px;"><code id="deletecode"></code></pre>
+                    </div>
+                </div>
+            </div>
+        <script>
+        $("#smfile").fileinput({
+            uploadUrl: 'https://sm.ms/api/upload?inajax=1&ssl=1',
+            allowedFileExtensions : ['jpeg', 'jpg', 'png', 'gif', 'bmp'],
+            overwriteInitial: false,
+            maxFileSize: 5120,
+            maxFilesNum: 10,
+        });
+        $('#smfile').on('fileuploaded', function(event, data, previewId, index) {
+            var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
+            if(response.code == 'success') {
+                if ( $("showurl").css("display") ) {
+                    $('#urlcode').append(response.data.url + "\n");
+                    $('#htmlcode').append("&lt;img src=\""+ response.data.url +"\" alt=\""+ files[index].name +"\" title=\""+ files[index].name +"\" /&gt;" + "\n");
+                    $('#bbcode').append("[img]"+ response.data.url +"[/img]" + "\n");
+                    $('#markdown').append("!["+ files[index].name +"](" + response.data.url + ")" + "\n");
+                    $('#deletecode').append(response.data.delete + "\n");
+
+                } else if (response.data.url) {
+                    $("#showurl").show();
+                    $('#urlcode').append(response.data.url + "\n");
+                    $('#htmlcode').append("&lt;img src=\""+ response.data.url +"\" alt=\""+ files[index].name +"\" title=\""+ files[index].name +"\" /&gt;" + "\n");
+                    $('#bbcode').append("[img]"+ response.data.url +"[/img]" + "\n");
+                    $('#markdown').append("!["+ files[index].name +"](" + response.data.url + ")" + "\n");
+                    $('#deletecode').append(response.data.delete + "\n");
+                }
+            }
+        });
+        </script>
+    </div>
+</script>
+</details>

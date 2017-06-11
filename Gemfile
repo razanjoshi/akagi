@@ -22,6 +22,9 @@ gem 'coffee-rails', '4.2.1'
 
 gem 'html-pipeline'
 
+gem "font-awesome-rails"
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails','4.1.1'
@@ -42,6 +45,8 @@ gem "RedCloth",           "~> 4.2.9", :require => false
 gem "github-markdown",    "~> 0.5",   :require => false
 gem "email_reply_parser", "~> 0.5",   :require => false
 gem "sanitize",           "~> 2.0",   :require => false
+
+gem 'pg'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -80,7 +85,7 @@ group :test do
 end
 
 group :production do
- gem 'pg', '0.18.4'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

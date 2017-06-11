@@ -1,0 +1,32 @@
+<% provide(:title, @case.title) %>
+<%= render partial:"blog/public/header", locals:{ str: "home" } %>
+
+<%= render 'blog/public/flash_notice' %>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar hidden-xs">
+      <%= sanitize markdown(@case.content).to_s %>
+    </div>
+
+    <div class="col-md-8 main">
+      <div class="main-hd">
+        <h1><%= @case.title%></h1>
+        <span class="edit">
+          <% if logged_in? %>
+              <%=  link_to "edit", [:edit, :blog, @case]  %>|<%=  link_to "delete", [:blog, @case],method: :delete,data:{confirm:"我再确认一遍，你是否需要删除"}  %>
+          <% end %>
+        </span>
+        <%= post_form(@post) %>
+      </div>
+      <div class="main-bd">
+        <div class="posts">
+          <%= render partial: 'blog/posts/post', collection: @posts, as: :post %>
+        </div>
+      </div>
+      <%= will_paginate @posts, class: "pull-right" %>
+    </div>
+  </div>
+</div>

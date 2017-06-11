@@ -1,0 +1,25 @@
+<% provide(:title,"Home") %>
+
+<%= render partial:"blog/public/header", locals:{ str: "home" } %>
+
+<%= render 'blog/public/flash_notice' %>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render partial: 'sidebar' %>
+
+    <div class="col-md-8 main">
+      <div class="main-hd">
+        <h3>即使如此，小镇依然转动不停。</h3>
+        <%= post_form(@post) %>
+      </div>
+      <div class="main-bd">
+        <div class="posts">
+          <%= render partial: 'blog/posts/post', collection: @posts, as: :post %>
+        </div>
+      </div>
+      <%= will_paginate @posts, class: "pull-right" %>
+    </div>
+  </div>
+</div>

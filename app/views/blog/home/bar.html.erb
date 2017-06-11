@@ -1,0 +1,37 @@
+<%= render partial:"blog/public/header", locals:{ str: "bar" } %>
+
+<%= render 'blog/public/flash_notice' %>
+
+<div class="row">
+  <div class="col-md-8 main">
+    <div class="main-hd">
+      <h3>最近的动向</h3>
+    </div>
+    <div class="main-bd">
+      <ul class="cases">
+
+        <% @cases.each do |thecase| %>
+          <div class="case">
+
+            <li id="case-<%= thecase.id %>">
+              <%= link_to thecase.title, [:blog, thecase] , id:"title"%>
+              <span class="timestamps">
+                Edited
+                <%= format_datetime(thecase.updated_at) %>
+              </span>
+              <p class="body"><%= sanitize markdown(thecase.content).to_s[0..450] %></p>
+              <span class="posts">
+                <ul class="posts">
+                  <%= render thecase.posts[0..2] %>
+                </ul>
+              </span>
+
+            </li>
+          </div>
+        <% end %>
+        <%= will_paginate @cases %>
+      </ul>
+    </div>
+
+  </div>
+</div>

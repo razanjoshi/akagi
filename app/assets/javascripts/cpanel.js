@@ -1,0 +1,11 @@
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap-sprockets
+//= require ./simditor/module
+//= require ./simditor/uploader
+//= require ./simditor/hotkeys
+//= require ./simditor/simditor
+//= require moment
+//= require moment/zh-cn
+//= require bootstrap-datetimepicker
+//= require_tree ./cpanel

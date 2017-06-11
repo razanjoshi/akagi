@@ -1,0 +1,10 @@
+<li>
+  <span>
+    <i class="icon-folder-open"></i>
+    <%= thecase.title %>
+  </span>
+  <%= link_to 'go',[:blog, thecase] %>
+  <ul>
+    <%= render partial:'blog/cases/case', collection: thecase.subcases, as: :thecase %>
+  </ul>
+</li>

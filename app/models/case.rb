@@ -1,25 +1,36 @@
 class Case < ApplicationRecord
-    belongs_to :user
-    has_one :active_caseships, class_name: "Caseship",foreign_key:"sub_id",dependent: :destroy
-    has_one :father_case, through: :active_caseships, source: :father
-    has_many :passive_caseships, class_name: "Caseship", foreign_key:"father_id",dependent: :destroy
-    has_many :sub_cases, through: :passive_caseships, source: :sub
 
+  #self.per_page = 20
 
+  has_many :subcases, class_name: "Case", foreign_key: "parent_id"
+  belongs_to :parent, class_name: "Case", optional: true
 
-    has_many :microposts,dependent: :destroy
-    default_scope -> { order(updated_at: :desc) }
-    validates :user_id, presence:true
-    #mount_uploader :picture, PictureUploader
-    #validate :picture_size
+  has_many :posts, dependent: :destroy
 
-    def father(other_case_id)
-        create_active_caseships(father_id: other_case_id)
+  default_scope -> { order(updated_at: :desc) }
+
+  scope :level, -> (level){ where(level: level) }
+
+  before_save :set_level
+
+  def set_level
+    if self.parent
+      self.level = self.parent.level + 1
+    else
+      self.level = 1
     end
+  end
 
-    def feed
-        sub_cases_ids = "SELECT sub_id FROM caseships WHERE father_id = :case_id"
-        Micropost.where("case_id IN (#{sub_cases_ids}) OR case_id = :case_id",case_id:id)
+  def get_family
+    family = [self]
+    child = self
+    (self.level-1).times do
+      child = child.parent
+      family.unshift child
     end
+    family
+  end
+
+
 
 end

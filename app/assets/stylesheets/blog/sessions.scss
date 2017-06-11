@@ -1,0 +1,66 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.login-bg{
+  background: image-url("login_bg.jpg") no-repeat;
+  background-size:cover;
+}
+.login{
+  margin: 10px 30px;
+  @media (min-width: 768px){
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 100px;
+  }
+}
+.login-box{
+  background-color: rgba(255,255,255,0.9);
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  padding: 30px;
+  h5{
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  .login-inputs{
+    border: 1px solid #ddd;
+    background-color: #fff;
+    margin-bottom: 20px;
+    .login-input:first-child{
+      border-bottom: 1px solid #ddd;
+    }
+    .login-input{
+      position: relative;
+      input{
+        border: none;
+        line-height: 30px;
+        width: 100%;
+        padding-left: 30px;
+      }
+      i{
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #999;
+      }
+    }
+
+  }
+  .login-submit{
+    input{
+      width: 100%;
+      line-height: 30px;
+      background-color: #44b549;
+      color: #fff;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      &:focus{
+        outline: none;
+      }
+    }
+  }
+}

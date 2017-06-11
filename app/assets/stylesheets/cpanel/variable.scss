@@ -1,0 +1,107 @@
+//media
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+//base
+$border-color: #e7e7eb;
+$input-border: #ccc;
+$link-color: #333;
+$link-gray: #888;
+$link-red: #f00;
+$link-blue: #4A90E2;
+$link-green: #44b549;
+$link-purple: #D43DE8;
+$link-color-bg: #f4f5f9;
+$active-color: #44b549;
+$active-hover: #2CA530;
+// navbar
+$navbar-bg: #fff;
+$navbar-border: $border-color;
+$navbar-color: $link-color;
+$navbar-height: 70px;
+$navbar-lineheight: 40px;
+$navbar-brand-height: $navbar-height;
+$navbar-brand-lineheight: $navbar-lineheight;
+$navbar-brand-color: $navbar-color;
+$navbar-toggle-border: $border-color;
+$navbar-iconbar-bg: $link-gray;
+$navbar-link-lineheight: $navbar-lineheight;
+$navbar-link-color: $navbar-color;
+$navbar-link-fontsize: 16px;
+$navbar-link-active-bg: $active-color;
+$navbar-link-active-color: #fff;
+
+$nav-avatar-width: 40px;
+$nav-avatar-height: $nav-avatar-width;
+
+//sidebar
+$sidebar-border: $border-color;
+$sidebar-menu-border: $border-color;
+$sidebar-menu-lineheight: 34px;
+$sidebar-menu-link-color: $link-color;
+$sidebar-menu-link-hover-bg: $link-color-bg;
+$sidebar-menu-link-active-bg: $active-color;
+$sidebar-menu-link-active-color: #fff;
+$sidebar-menu-dt-color: #8d8d8d;
+// main
+$main-border: $border-color;
+$main-hd-border: $border-color;
+$main-hd-fontsize: 16px;
+//shop
+$shop-infor-border:$border-color;
+$shop-label-color: $link-gray;
+//table
+$table-link-color: $link-color;
+$table-border: $border-color;
+$table-th-bg: $link-color-bg;
+$table-empty-color: $link-gray;
+//pagination
+$pagination-color: $link-color;
+$pagination-active-bg: $active-color;
+$pagination-active-border: $active-color;
+//form
+$form-box-bg: $link-color-bg;
+$btn-primary: $active-color;
+$btn-primary-focus: $active-hover;
+//switch
+$switch-height: 26px;
+$switch-circle-height: $switch-height - 2px;
+$switch-on-color: $active-color;
+$switch-off-color: $input-border;
+$switch-box-width: 60px;
+//uploadimg
+$uploadimg-border: $input-border;
+$uploadimg-height: 80px;
+//searchbar
+$search-width: 30px;
+$search-font-color: #fff;
+$search-bg: $active-color;
+$search-bg-hover: $active-hover;
+$search-border: $input-border;
+$search-clear-color: $input-border;
+$search-clear-hover: $link-color;
+//nav-tabs
+$nav-tabs-border: $border-color;
+$nav-tabs-link: $link-gray;
+$nav-tabs-link-hover: $link-color;
+$nav-tabs-link-active: $active-color;
+//product-item
+$product-item-border: $border-color;
+$product-item-hd-bg: $link-color-bg;
+$product-item-p-color: $link-gray;
+$product-price-color: $link-red;
+$product-link-color: $link-color;
+//order
+$input-group-order: $input-border;
+//data
+$data-total-bg: $link-color-bg;
+$data-total-border: $border-color;
+$data-total-p: $link-gray;
+$data-red: $link-red;
+$data-blue: $link-blue;
+$data-green: $link-green;
+$data-purple: $link-purple;
+$data-trend-border: $border-color;
+$data-trend-title-bg: $link-color-bg;
+$data-chart-btn-border: $input-border;
+$data-chart-btn-active-bg: $active-color;

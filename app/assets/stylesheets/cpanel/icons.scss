@@ -1,0 +1,37 @@
+@font-face {font-family: "iconfont";
+  src: font-url('cpanel/fonts/iconfont.eot');
+  src: url('cpanel/fonts/iconfont.eot#iefix') format('embedded-opentype'),
+  font-url('cpanel/fonts/iconfont.woff') format('woff'),
+  font-url('cpanel/fonts/iconfont.ttf') format('truetype'),
+  font-url('cpanel/fonts/iconfont.svg#iconfont') format('svg');
+}
+
+[class^="cm-"]:before, [class*="cm-"]:before{
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.cm-data:before { content: "\e600"; }
+.cm-shop:before { content: "\e601"; }
+.cm-order:before { content: "\e602"; }
+.cm-product:before { content: "\e603"; }
+.cm-qr:before { content: "\e604"; }
+.cm-cancle:before { content: "\e605"; }
+.cm-down:before { content: "\e606"; }
+.cm-advert:before { content: "\e607"; }
+.cm-point:before { content: "\e608"; }
+.cm-chart:before { content: "\e609"; }
+.cm-freshen:before { content: "\e60a"; }
+.cm-notice:before { content: "\e60b"; }
+.cm-left:before { content: "\e60c"; }
+.cm-edit:before { content: "\e60d"; }
+.cm-right:before { content: "\e60e"; }
+.cm-plus:before { content: "\e60f"; }
+.cm-calendar:before { content: "\e610"; }
+.cm-detail:before { content: "\e611"; }
+.cm-psw:before { content: "\e612"; }
+.cm-user:before { content: "\e613"; }
+.cm-close:before { content: "\e614"; }
