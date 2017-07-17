@@ -3,10 +3,15 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :case
 
+  has_many :values, class_name: "Post", foreign_key: "key_id"
+  belongs_to :key, class_name: "Post", optional: true
+
+
   default_scope -> { order(created_at: :desc) }
-  validates :user_id, presence:true
+  #validates :user_id, presence:true
   validates :content, presence:true
   #mount_uploader :picture, PictureUploader
+  accepts_nested_attributes_for :values
 
 
   before_create :default_case
