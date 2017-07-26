@@ -26,7 +26,6 @@ gem 'bcrypt', '3.1.11'
 gem 'coffee-rails', '4.2.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'commonmarker'
 gem 'html-pipeline'
 
 gem "font-awesome-rails"
@@ -53,7 +52,7 @@ gem "RedCloth",           "~> 4.2.9", :require => false
 gem "github-markdown",    "~> 0.5"
 gem "email_reply_parser", "~> 0.5",   :require => false
 gem "sanitize",           "~> 2.0",   :require => false
-gem 'rumoji'
+#gem 'rumoji'
 gem 'weui-rails'
 gem 'qiniu'
 
