@@ -13,3 +13,7 @@ Rails.application.config.assets.precompile += %w( blog.css )
 Rails.application.config.assets.precompile += %w( blog.js )
 Rails.application.config.assets.precompile += %w( cpanel.css )
 Rails.application.config.assets.precompile += %w( cpanel.js )
+Rails.application.config.assets.precompile += %w( wechat.css )
+Rails.application.config.assets.precompile += %w( wechat.js )
+Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)$/
+Rails.application.config.assets.paths << Rails.root.join('app','assets','fonts')

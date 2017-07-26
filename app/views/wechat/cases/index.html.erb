@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="main">
+    <header>
+      帖子列表
+      <a class="cm-back to_back" href="/wechat"></a>
+      <a class="to_right" href="/wechat/cases/new">发布</a>
+    </header>
+    <div class="content">
+        <%= render partial:"case", collection: @cases, as: :thecase %>
+    </div>
+  </div>
+</div>

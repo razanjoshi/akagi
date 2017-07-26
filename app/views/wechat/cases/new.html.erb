@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="main">
+    <header>
+      发布新帖
+      <a class="cm-back to_back" href="/wechat/cases"></a>
+    </header>
+    <div class="content">
+      <section class="wrapper style1 align-center">
+        <div class="inner medium">
+          <h2>发布</h2>
+          <%= form_for [:wechat, @case] do |f| %>
+          <div class="field">
+            <label for="message">Title</label>
+            <%= f.text_field :title, value: @case.title%>
+          </div>
+          <div class="field">
+            <label for="message">Content</label>
+            <%= f.text_area :content, value: @case.content,rows:"6" %>
+          </div>
+          <label for="name">Name</label>
+            <div class="field first">
+              <%= f.text_field :nickname, value: @case.nickname %>
+            </div>
+            <%= render partial:'wechat/public/photo', locals: { types: 'case' } %>
+            <%= f.hidden_field :types, value:2 %>
+                <input type="submit" name="submit" id="submit" value="Send Message" />
+
+          <% end %>
+
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>

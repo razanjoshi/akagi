@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609165021) do
+ActiveRecord::Schema.define(version: 20170722150413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 20170609165021) do
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "level",      default: 1
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "level",                 default: 1
     t.integer  "parent_id"
+    t.string   "nickname",   limit: 50
+    t.integer  "types",                 default: 1
     t.index ["user_id", "updated_at"], name: "index_cases_on_user_id_and_updated_at", using: :btree
     t.index ["user_id"], name: "index_cases_on_user_id", using: :btree
   end
@@ -37,13 +39,26 @@ ActiveRecord::Schema.define(version: 20170609165021) do
     t.index ["sub_id"], name: "index_caseships_on_sub_id", using: :btree
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string   "title",          limit: 20
+    t.string   "image",          limit: 150
+    t.integer  "photoable_id"
+    t.string   "photoable_type"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["photoable_id"], name: "index_photos_on_photoable_id", using: :btree
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "picture"
     t.integer  "case_id"
+    t.integer  "key_id"
+    t.string   "nickname",   limit: 50
+    t.integer  "types",                 default: 1
     t.index ["case_id"], name: "index_posts_on_case_id", using: :btree
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
@@ -73,6 +88,8 @@ ActiveRecord::Schema.define(version: 20170609165021) do
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
     t.string   "weibo"
+    t.string   "weixin_openid"
+    t.string   "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

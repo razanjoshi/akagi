@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="main">
+    <header>
+      <%= @case.title %>
+      <a class="cm-back to_back" href="/wechat/cases"></a>
+      <a class="to_right" href="/wechat/posts/new?id=<%= @case.id %>">回复</a>
+    </header>
+    <div class="content">
+
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <%= render partial: 'slide', collection: @case.photos, as: :slide %>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <script type="text/javascript">
+        var swiper = new Swiper('.swiper-container', {
+          pagination: '.swiper-pagination',
+          autoplay: 3000
+        });
+      </script>
+
+
+      <div class="box">
+        <h4>
+          <%= @case.get_nickname %>
+          <span>reply at
+          </span><%= format_datetime(@case.created_at) %></h4>
+        <p>
+          <span class="image left">
+            <%= image_tag @case.get_avatar  %>
+          </span><%= @case.content %></p>
+      </div>
+
+      <%= render partial:'post', collection:@case.posts.reorder('created_at asc'), as: :post %>
+      <section class="wrapper style1 align-center">
+        <div class="inner medium">
+          <h2>Reply</h2>
+          <%= form_for [:wechat, @post] do |f| %>
+          <div class="field">
+            <label for="message">Message</label>
+            <%= f.text_area :content, value: @post.content,rows:"6" %>
+          </div>
+          <label for="name">Name</label>
+            <div class="field first">
+              <%= f.text_field :nickname, value: @post.nickname %>
+            </div>
+            <%= f.hidden_field :types, value:2 %>
+            <%= hidden_field_tag :id, @case.id  %>
+            <ul class="actions">
+              <li>
+                <input type="submit" name="submit" id="submit" value="Send Message" />
+              </li>
+            </ul>
+          <% end %>
+
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+</div>

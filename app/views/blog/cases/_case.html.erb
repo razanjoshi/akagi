@@ -5,6 +5,6 @@
   </span>
   <%= link_to 'go',[:blog, thecase] %>
   <ul>
-    <%= render partial:'blog/cases/case', collection: thecase.subcases, as: :thecase %>
+    <%= render partial:'blog/cases/case', collection: thecase.subcases.by_types(1), as: :thecase %>
   </ul>
 </li>

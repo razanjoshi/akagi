@@ -1,0 +1,19 @@
+defaults: &defaults
+# App config start
+  web_title: 'UniClownTheWorldPortable'
+  app_alise: 'UCTWP'
+  app_url: 'http://cm.hk1.mofasuidao.cn/'
+# App end
+
+  nicknames: ['吉良吉影','东方仗助','空条承太郎']
+
+
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,9 +1,9 @@
-@font-face {font-family: "iconfont";
-  src: font-url('cpanel/fonts/iconfont.eot');
-  src: url('cpanel/fonts/iconfont.eot#iefix') format('embedded-opentype'),
-  font-url('cpanel/fonts/iconfont.woff') format('woff'),
-  font-url('cpanel/fonts/iconfont.ttf') format('truetype'),
-  font-url('cpanel/fonts/iconfont.svg#iconfont') format('svg');
+@font-face {font-family: "cmFont";
+  src: font-url('cmfont.eot');
+  src: url('cmfont.eot#iefix') format('embedded-opentype'),
+  font-url('cmfont.woff') format('woff'),
+  font-url('cmfont.ttf') format('truetype'),
+  font-url('cmfont.svg#cmfont') format('svg');
 }
 
 [class^="cm-"]:before, [class*="cm-"]:before{

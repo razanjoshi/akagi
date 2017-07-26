@@ -1,21 +1,48 @@
 class Post < ApplicationRecord
 
-  belongs_to :user
+  TYPES_OF_SELF    = 1
+  TYPES_OF_ANOY    = 2
+  TYPES_OF_NONANOY   = 3
+
+  belongs_to :user, optional: true
   belongs_to :case
 
   has_many :values, class_name: "Post", foreign_key: "key_id"
   belongs_to :key, class_name: "Post", optional: true
 
-
-  default_scope -> { order(created_at: :desc) }
   #validates :user_id, presence:true
   validates :content, presence:true
   #mount_uploader :picture, PictureUploader
   accepts_nested_attributes_for :values
 
+  has_many :photos, as: :photoable
+
+  accepts_nested_attributes_for :photos, reject_if: proc{ |photo|
+              photo['image'].blank?  }
+
+  default_scope -> { order(created_at: :desc) }
+  scope :created_asc, -> { order(created_at: :asc) }
+
 
   before_create :default_case
   before_save :default_case
+
+
+  def get_nickname
+    self.types == Post::TYPES_OF_ANOY ? self.nickname : self.user.decode_nickname
+  end
+
+
+
+  def get_avatar
+    if self.user.present?
+      self.user.avatar
+    elsif Settings.nicknames.include? self.nickname
+      self.nickname + '.jpg'
+    else
+      Settings.nicknames.sample + '.jpg'
+    end
+  end
 
 
 

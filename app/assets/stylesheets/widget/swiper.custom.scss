@@ -1,0 +1,10 @@
+.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+	bottom: 0;
+}
+.swiper-pagination-bullet{
+	background-color: $swiperPaginationBgColor;
+	opacity: 1;
+}
+.swiper-pagination-bullet-active{
+	background-color: $swiperPaginationBgColorOn;
+}

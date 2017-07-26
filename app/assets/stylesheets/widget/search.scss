@@ -1,0 +1,37 @@
+.search{
+	padding: 6px 15px;
+	.search_box{
+		border-radius: 14px;
+		background-color: $search-bg-color;
+		display: -webkit-flex;
+    	display: -ms-flexbox;
+		display: flex;
+		line-height: $search-height;
+		i{
+			padding-left: 10px;
+		}
+		form{
+			-webkit-flex: 1 1 0;
+    		-ms-flexbox: 1 1 0;
+			flex:1 1 0;
+			input{
+				border: none;
+				background: none;
+				padding: 0 10px;
+				width: 100%;
+				line-height: $search-height;
+				font-size: 16px;
+			}
+		}
+
+	}
+}
+.search_m{
+	padding: 6px 120px 6px 45px;
+}
+.search_r{
+	padding: 6px 15px 6px 45px;
+}
+.home_search{
+	background-color: #fff;
+}

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="main">
+    <div class="content">
+      <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+        <div class="content">
+          <h1>碧莲奈尔议事厅『开坛公告』</h1>
+          <p class="major">本站主旨为满足资讯长期保存和再利用、事件事宜讨论议论的需求。虽然现在的人生活节奏很快，可以用即时聊天交流一切的事情，但是当交流的时候需要一个中心点，当交流的时间长至几天的时候，微信并不能满足所有需求。此站为此而生。</p>
+          <ul class="actions vertical">
+            <li>
+              <a href="/wechat/cases" class="button big wide smooth-scroll-middle">Get Started</a>
+            </li>
+          </ul>
+        </div>
+        <div class="image">
+          <%= image_tag 'table.jpg' %>
+        </div>
+      </section>
+      <%= render partial:"/wechat/cases/case", collection: @cases, as: :thecase %>
+    </div>
+  </div>
+</div>

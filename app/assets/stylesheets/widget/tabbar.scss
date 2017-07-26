@@ -1,0 +1,46 @@
+.weui_tabbar{
+	position: fixed;
+	z-index: 99;
+}
+.weui_tabbar_item{
+	margin: 3px 0 2px 50px;
+}
+.weui_tabbar_icon{
+  line-height: $tabbar-lightHeight;
+  text-align: center;
+  color: $tabbar-color;
+  position: relative;
+  i:before{
+    font-size: $tabbar-icon-fontsize;
+  }
+  .badge{
+  	background-color: $badge;
+  	width: 10px;
+  	height: 10px;
+  	border-radius: 50%;
+  	position: absolute;
+  	right: -4px;
+  	top: -2px;
+  	color: #fff;
+  }
+}
+.weui_tabbar_item.weui_bar_item_on .weui_tabbar_icon{
+  color: $tabbar-color-active;
+}
+.weui_tabbar_item.weui_bar_item_on .weui_tabbar_label{
+  color: $tabbar-color-active;
+}
+.weui_tabbar_icon + .weui_tabbar_label{
+	margin: 0;
+}
+
+.cart_tabbar{
+  .weui_tabbar_item{
+    padding: 7px;
+    margin: 0;
+    p{
+      line-height: 42px;
+      text-align: center;
+    }
+  }
+}

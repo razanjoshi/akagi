@@ -1,0 +1,9 @@
+/*
+ *= require_self
+ *= require font-awesome
+ *= require weui-rails
+ *= require ./wechat/main
+ *= require ./wechat/global
+ *= require ./wechat/swiper.min.css
+ *= require ./wechat/wx
+ */

@@ -1,0 +1,72 @@
+$bg-color: #eee;
+$base-color: #333;
+$active-color: #FE0000;//old:#04BE02
+$gray: #888;
+$orange: $active-color;//old:#f50
+$badge: $active-color; //old: F12C20
+$icon-fontsize-m: 24px;
+$btn-primary-bgcolor: $active-color;
+$btn-primary-bgcolor-active: #d20303;
+$primary-color: $active-color;
+$btn-plain-primary-color: $active-color;
+$btn-plain-primary-color-active: #d20303;
+
+//tabbar
+$tabbar-color: $gray;
+$tabbar-color-active: $active-color;
+$tabbar-lightHeight: 24px;
+$tabbar-icon-fontsize: $icon-fontsize-m;
+
+//swiper_index
+$swiperPaginationBgColor: #d8d8d8;
+$swiperPaginationBgColorOn: $active-color;//old: #E97017
+
+//search
+$search-bg-color: #efeff4;
+$search-height: 32px;
+
+//shop
+$shop-logo-width: 44px;
+$shop-descrip-color: $gray;
+$shop-more-color: $active-color;
+$shop-more-border-color: $active-color;
+
+$shop-qr-min-color: $gray;
+$shop-qr-min-height: 24px;
+$shop-qr-min-lineheight: $shop-qr-min-height;
+$shop-qr-min-fontsize: $icon-fontsize-m;
+
+$to-btn-width: 45px;
+$to-btn-height: $to-btn-width;
+$to-btn-lineheight: $to-btn-width;
+$to-btn-color: $gray;
+$to-btn-fontsize: $icon-fontsize-m;
+
+$old-price-color: $gray;
+
+$current-category-color: $base-color;
+$current-category-bg-color: $bg-color;
+
+$add-cart-bg-color: $active-color;
+
+$shop-nav-active: $active-color;
+
+//cart
+$cart-del-color: $gray;
+$cart-count-color: $gray;
+$cart-product-count-bgcolor: $active-color;
+
+$edit-cart-color: $active-color;
+$edit-cart-border-color: $active-color;
+
+$tabs-border-color: $active-color;
+$tabs-item-color: $active-color;
+$tabs-item-bgcolor-active: $active-color;
+
+//sign
+$vertifycode-color: $active-color;
+$sign-tips-color: $active-color;//old: #f76260
+
+//user
+$user-edit-color: $active-color;
+$user-edit-border-color: $active-color;

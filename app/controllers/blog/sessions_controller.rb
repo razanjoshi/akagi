@@ -1,3 +1,4 @@
+require 'net/http'
 class Blog::SessionsController < ApplicationController
 
   layout 'blog_login'
@@ -7,8 +8,10 @@ class Blog::SessionsController < ApplicationController
   end
 
   def create
+
     @user = User.find_by(email: session_params[:email].downcase)
     if @user && @user.authenticate(session_params[:password])
+      log_in User.first
       redirect_back_or root_url
     else
       flash.now[:notice] = "错误的召唤阵"
@@ -20,12 +23,12 @@ class Blog::SessionsController < ApplicationController
     json = weibo_gettoken(params[:code])
     session[:access_token] = json['access_token']
     @user = User.find_by(weibo:json['uid'])
-    #debugger
     if json['uid'].nil?
       flash.now[:noitce] = "有点不好使，请联系我"
       redirect_to blog_login_path and return
     end
     if @user
+      @user.update avatar:"http://tp1.sinaimg.cn/#{@user.weibo}/180/0/1"
       log_in @user
       redirect_back_or root_url
     else

@@ -1,0 +1,37 @@
+@font-face {font-family: "gfFont";
+  src: font-url('iconfont.eot');
+  src: font-url('iconfont.eot#iefix') format('embedded-opentype'),
+  font-url('iconfont.woff') format('woff'),
+  font-url('iconfont.ttf') format('truetype'),
+  font-url('iconfont.svg#iconfont') format('svg');
+}
+
+[class^="gficon-"]:before, [class*="gficon-"]:before{
+  font-family:"gfFont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.gficon-home:before { content: "\e783"; }
+.gficon-home-fill:before { content: "\e784"; }
+.gficon-reserve:before { content: "\e88e"; }
+.gficon-reserve-fill:before { content: "\e88d"; }
+.gficon-tour:before { content: "\e7bd"; }
+.gficon-tour-fill:before { content: "\e7be"; }
+.gficon-my:before { content: "\e7eb"; }
+.gficon-my-fill:before { content: "\e7ec"; }
+.gficon-search:before { content: "\e797"; }
+.gficon-back:before { content: "\e833"; }
+.gficon-add:before { content: "\e799"; }
+.gficon-money:before { content: "\e77a"; }
+.gficon-orders:before { content: "\e897"; }
+.gficon-reserve-orders:before { content: "\e8a2"; }
+.gficon-refund:before { content: "\e8ab"; }
+.gficon-map:before { content: "\e650"; }
+.gficon-service:before { content: "\e643"; }
+.gficon-hot:before { content: "\e615"; }
+.gficon-plus:before { content: "\e8e1"; }
+.gficon-minus:before { content: "\e8e2"; }
+.gficon-recharge:before { content: "\e62d"; }
