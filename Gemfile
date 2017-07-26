@@ -26,6 +26,7 @@ gem 'bcrypt', '3.1.11'
 gem 'coffee-rails', '4.2.1'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'commonmarker'
 gem 'html-pipeline'
 
 gem "font-awesome-rails"
