@@ -23,6 +23,11 @@ class Wechat::PostsController < Wechat::BaseController
     redirect_to [:wechat,  @case]
   end
 
+  def more
+    @posts = @case.posts.paginate(page: params[:page], per_page: 5)
+    render partial: '/wechat/cases/post', collection: @posts, as: :post
+  end
+
 
   private
   def set_case

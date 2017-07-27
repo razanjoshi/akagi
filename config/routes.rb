@@ -48,7 +48,11 @@ Rails.application.routes.draw do
 
     root 'home#index'
 
-    resources :posts
+    resources :posts do
+      collection do
+        get :more
+      end
+    end
     resources :users
     resources :cases
     resources :photos

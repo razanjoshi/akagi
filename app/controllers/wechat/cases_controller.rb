@@ -23,6 +23,7 @@ class Wechat::CasesController < Wechat::BaseController
 
 
   def show
+    @posts = @case.posts.paginate(page: params[:page], per_page: 5)
     @post = @case.posts.build(nickname: Settings.nicknames.sample, types:3)
   end
 

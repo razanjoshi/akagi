@@ -33,14 +33,24 @@
           </span><%= @case.content %></p>
       </div>
 
-      <%= render partial:'post', collection:@case.posts.reorder('created_at asc'), as: :post %>
+
+      <div class="weui_panel cells_top dropload-content" data-url="/wechat/posts/more?id=<%= @case.id%>">
+        <div class="weui_panel_bd list">
+          <%= render partial:'post', collection:@posts, as: :post %>
+        </div>
+      </div>
+
+
+
+
+
       <section class="wrapper style1 align-center">
         <div class="inner medium">
           <h2>Reply</h2>
           <%= form_for [:wechat, @post] do |f| %>
           <div class="field">
             <label for="message">Message</label>
-            <%= f.text_area :content, value: @post.content,rows:"6" %>
+            <%= f.text_area :content, value: @post.content, rows:"6" %>
           </div>
           <label for="name">Name</label>
             <div class="field first">

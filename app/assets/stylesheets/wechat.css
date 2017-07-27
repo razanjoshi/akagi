@@ -6,4 +6,5 @@
  *= require ./wechat/global
  *= require ./wechat/swiper.min.css
  *= require ./wechat/wx
+ *= require ./wechat/extra
  */

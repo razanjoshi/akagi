@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
 
   def decode_nickname
-    Rumoji.decode(URI.decode(self.name))
+    self.name
   end
 
 

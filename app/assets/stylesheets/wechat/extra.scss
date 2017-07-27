@@ -1,0 +1,23 @@
+.weui-toast{
+	padding: 0 1.2em 1.2em;
+	margin-left: -5em;
+	i{
+		margin-top: 22px;
+		display: block;
+		&:before{
+			font-size: 55px;
+			color: #fff;
+		}
+	}
+	.weui-toast-content{
+		margin: 0;
+		margin-top: 5px;
+	}
+}
+
+.dropload-down{
+ 	text-align: center;
+ 	color: #888;
+ 	flex: 0 0 100%;
+ 	padding-top: 10px;
+ }
