@@ -2,7 +2,6 @@ class Wechat::BaseController < ApplicationController
 
   layout 'wechat'
 
-  include Wechat::SessionsHelper
 
   #before_action :wechat_oauth
 
