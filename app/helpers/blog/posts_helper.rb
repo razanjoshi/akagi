@@ -1,7 +1,7 @@
 module Blog::PostsHelper
 
   def post_options_for(post)
-    if current_user?(post.user)
+    if current_user?(uniclown)
       content_tag :div do
         concat(link_to("edit",  [:edit, :blog, post]))
         concat '|'
