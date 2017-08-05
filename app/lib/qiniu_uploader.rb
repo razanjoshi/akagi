@@ -41,7 +41,7 @@ class QiniuUploader
 			if info.nil?
 				return nil
 			else
-				img_url = url + key
+				img_url = url + key + '?imageMogr2/format/webp/blur/1x0/quality/75|imageslim'
 			end
       # 打印文件信息
 
