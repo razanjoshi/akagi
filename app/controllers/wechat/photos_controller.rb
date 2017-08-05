@@ -9,9 +9,13 @@ class Wechat::PhotosController < Wechat::BaseController
 
     url = QiniuUploader.default_put(file)
 
-    render json: { success: true,
-                  msg: 'photo.uploaded.success',
-                  file_path: url }
+    if url.nil?
+      render json: { success: false }
+    else
+      render json: { success: true,
+                    msg: 'photo.uploaded.success',
+                    file_path: url }
+    end
 
   end
 

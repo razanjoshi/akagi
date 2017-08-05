@@ -4,6 +4,11 @@ $ ->
 
     data = new FormData()
     data.append 'photo', $('#case-file')[0].files[0]
+    $('p.weui-toast-content').html '开始上传'
+    $('.wechat-notice').show()
+    setTimeout  ->
+      $('.wechat-notice').hide()
+    , 3000
 
     $.ajax
       url: '/wechat/photos'
@@ -24,6 +29,12 @@ $ ->
           input.type = 'hidden'
           $('.img-preview').append input
           $photos = $photos + 1
+        else
+          $('p.weui-toast-content').html '上传失败'
+          $('.wechat-notice').show()
+          setTimeout  ->
+            $('.wechat-notice').hide()
+          , 3000
 
     return
 
@@ -31,6 +42,11 @@ $ ->
 
     data = new FormData()
     data.append 'photo', $('#post-file')[0].files[0]
+    $('p.weui-toast-content').html '开始上传'
+    $('.wechat-notice').show()
+    setTimeout  ->
+      $('.wechat-notice').hide()
+    , 3000
 
     $.ajax
       url: '/wechat/photos'
@@ -51,5 +67,14 @@ $ ->
           input.type = 'hidden'
           $('.img-preview').append input
           $photos = $photos + 1
+        else
+          $('p.weui-toast-content').html '上传失败'
+          $('.wechat-notice').show()
+          setTimeout  ->
+            $('.wechat-notice').hide()
+          , 3000
 
     return
+
+
+  $('.wechat-notice').hide()

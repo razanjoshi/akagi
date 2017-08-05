@@ -38,7 +38,11 @@ class QiniuUploader
       # 调用 upload_file 方法上传
       info = Qiniu.upload_file uptoken: uptoken, file: filePath, bucket: bucket, key: key
 
-			img_url = url + key
+			if info.nil?
+				return nil
+			else
+				img_url = url + key
+			end
       # 打印文件信息
 
     end
