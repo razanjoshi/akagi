@@ -61,4 +61,13 @@ class Case < ApplicationRecord
   end
 
 
+  def logo
+    if self.photos.empty?
+      return nil
+    else
+      self.photos.first.image
+    end
+  end
+
+
 end

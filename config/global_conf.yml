@@ -3,14 +3,24 @@ defaults: &defaults
   web_title: 'UniClownTheWorldPortable'
   app_alise: 'UCTWP'
   app_url: 'http://cm.hk1.mofasuidao.cn/'
+  visit_url: 'http://uniclown.com'
 # App end
 
-  nicknames: ['吉良吉影','东方仗助','空条承太郎']
+  nicknames: ['吉良吉影', '东方仗助', '空条承太郎', '夏亚', '卡谬', '达比', '武藤游戏']
+  wechat_appid:      "wx9ee1b2f92d2d5e51"
+  wechat_appsecret:  "de7235e777e93dfbb29d94b0a7130644"
+
+# Redis config start
+  redis_host: localhost
+  redis_port: 6379
+  redis_db: 14
+# Redis end
 
 
 
 development:
   <<: *defaults
+  visit_url: 'http://192.168.4.146:3000'
 
 test:
   <<: *defaults

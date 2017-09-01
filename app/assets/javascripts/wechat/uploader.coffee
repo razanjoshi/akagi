@@ -4,7 +4,8 @@ $ ->
 
     data = new FormData()
     data.append 'photo', $('#case-file')[0].files[0]
-
+    $('p.weui-toast-content').html '上传中'
+    $('.wechat-notice').show()
 
     $.ajax
       url: '/wechat/photos'
@@ -25,13 +26,10 @@ $ ->
           input.type = 'hidden'
           $('.img-preview').append input
           $photos = $photos + 1
+        else
+          wechat_notice('上传失败，请重试')
       error:  ->
-        $('p.weui-toast-content').html '上传失败,请重试'
-        $('.wechat-notice').show()
-        setTimeout  ->
-          $('.wechat-notice').hide()
-        , 3000
-
+        wechat_notice('上传失败，请重试')
 
     return
 
@@ -39,7 +37,8 @@ $ ->
 
     data = new FormData()
     data.append 'photo', $('#post-file')[0].files[0]
-
+    $('p.weui-toast-content').html '上传中'
+    $('.wechat-notice').show()
 
     $.ajax
       url: '/wechat/photos'
@@ -49,6 +48,7 @@ $ ->
       contentType: false,
       success: (data) ->
         if data.success == true
+          $('.wechat-notice').hide()
           img = data.file_path
 
           html = '<li class="weui-uploader__file" style="background-image:url(' + img + ')"></li>'
@@ -60,14 +60,16 @@ $ ->
           input.type = 'hidden'
           $('.img-preview').append input
           $photos = $photos + 1
+        else
+          wechat_notice('上传失败，请重试')
       error:  ->
-        $('p.weui-toast-content').html '上传失败,try again'
-        $('.wechat-notice').show()
-        setTimeout  ->
-          $('.wechat-notice').hide()
-        , 3000
+        wechat_notice('上传失败，请重试')
 
     return
 
-
-  $('.wechat-notice').hide()
+  wechat_notice = (notice)->
+    $('p.weui-toast-content').html notice
+    $('.wechat-notice').show()
+    setTimeout  ->
+      $('.wechat-notice').hide()
+    , 3000

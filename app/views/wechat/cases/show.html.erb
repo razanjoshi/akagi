@@ -28,9 +28,9 @@
           <span>reply at
           </span><%= format_datetime(@case.created_at) %></h4>
         <p>
-          <span class="image left">
+          <span class="image right">
             <%= image_tag @case.get_avatar  %>
-          </span><%= @case.content %></p>
+          </span><%= post_content_for(@case) %></p>
       </div>
 
 
