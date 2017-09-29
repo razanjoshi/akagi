@@ -35,6 +35,7 @@ class Wechat::PostsController < Wechat::BaseController
   end
 
   def post_param
+    params['post']['photos_attributes'] = params['case']['photos_attributes']
     params.require('post').permit(:nickname, :content, :types, photos_attributes:[:image])
   end
 

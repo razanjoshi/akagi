@@ -9,4 +9,5 @@
 //= require ./wechat/util
 //= require ./wechat/skel.min
 //= require ./wechat/main
+//= require ./wechat/html5ImgCompress.min
 //= require_tree ./wechat

@@ -23,7 +23,7 @@
             </div>
             <%= render partial:'wechat/public/photo', locals: { types: 'case' } %>
             <%= f.hidden_field :types, value:2 %>
-                <input type="submit" name="submit" id="submit" value="Send Message" />
+                <button  onclick="formsubmit();"/>Send Message</button>
 
           <% end %>
 

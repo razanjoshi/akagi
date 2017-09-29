@@ -60,10 +60,10 @@ gem 'qiniu'
 
 gem 'pg'
 
-#gem 'redis', '~> 3.0'
-#gem 'redis-namespace'
-#gem 'weixin_authorize', git: 'https://github.com/wikimo/weixin_authorize.git'
-#gem 'weixin_rails_middleware'
+gem 'redis', '~> 3.0'
+gem 'redis-namespace'
+gem 'weixin_authorize', git: 'https://github.com/wikimo/weixin_authorize.git'
+gem 'weixin_rails_middleware'
 gem 'settingslogic'
 
 
