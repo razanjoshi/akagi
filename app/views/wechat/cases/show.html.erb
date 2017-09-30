@@ -72,3 +72,15 @@
   </div>
 
 </div>
+<%= render partial: 'wechat/public/jsapi'  %>
+
+<script type="text/javascript">
+  wx.ready(function () {
+    wx.onMenuShareAppMessage({title: "<%= @case.title %>", desc: "<%= wechat_desc_for_case(@case) %>", link: "<%= Settings.visit_url %>/wechat/cases/<%= @case.id %>", imgUrl: "<%= @case.photos.first.image %>", success: function () {}});
+    wx.onMenuShareTimeline({title: "<%= @case.title %>", link: "<%= Settings.visit_url %>/wechat/cases/<%= @case.id %>", imgUrl: "<%= @case.photos.first.image %>", success: function () {}});
+  });
+
+  wx.error(function (res) {
+    // alert(res);
+  });
+</script>

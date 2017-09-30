@@ -21,15 +21,14 @@ $ ->
         url = '/wechat/photos'
         formData = new FormData
         formData.append 'photo', convertBase64UrlToBlob(base64)
-        img = document.createElement('img')
-        img.src = base64
-        img.className = 'img-responsive'
-        li = document.createElement('li')
-        li.className = 'weui-uploader__file weui-uploader__file_status'
-        li.innerHTML = '<div class="weui-uploader__file-content"><i class="weui-loading"></i></div>'
+
+        img = $('<img src="" class="img-responsive">')
+        img.attr('src', base64)
+        li = $('<li class="weui-uploader__file weui-uploader__file_status"><div class="weui-uploader__file-content"><i class="weui-loading"></i></div></li>')
         li.append img
-        li.setAttribute 'id', 'image' + index
+        li.attr 'id', 'image' + index
         $('.img-preview').append li
+
         $.ajax(
           url: url
           type: 'POST'
@@ -37,16 +36,16 @@ $ ->
           data: formData
           processData: false
           contentType: false).done((data) ->
-          photo = data.file_path
-          $('#image' + index).removeClass 'weui-uploader__file_status'
-          $('#image' + index + ' img').attr 'src', photo
-          input = document.createElement('input')
-          input.name = 'case[photos_attributes][' + $photos + '][image]'
-          input.value = photo
-          input.type = 'hidden'
-          $('.img-preview').append input
-          $photos = $photos + 1
-          return
+            photo = data.file_path
+            $('#image' + index).removeClass 'weui-uploader__file_status'
+            $('#image' + index + ' img').attr 'src', photo
+            input = document.createElement('input')
+            input.name = 'case[photos_attributes][' + $photos + '][image]'
+            input.value = photo
+            input.type = 'hidden'
+            $('.img-preview').append input
+            $photos = $photos + 1
+            return
         ).fail (res) ->
         return
       notSupport: (file) ->
@@ -56,7 +55,55 @@ $ ->
   )
     return
 
+  $('#qiniuimage').change ->
+    fileName = $('#qiniuimage').val().split('\\').pop()
+    f = $('#qiniuimage')[0].files[0]
+    data = new FormData()
+    data.append 'filename', fileName
+    $.ajax
+      url: '/wechat/photos/gettoken'
+      type: 'POST',
+      data: data,
+      processData: false,
+      contentType: false,
+      success: (data) ->
+        token = data.token
+        key = data.key
+        photo = data.photo
+        new html5ImgCompress(f,
+          done: (file, base64) ->
+            index = $photos
+            url = '/wechat/photos'
+            li = $('<li class="weui-uploader__file weui-uploader__file_status" style="background-image:url(' + base64 + ')"><div class="weui-uploader__file-content"><i class="weui-loading"></i></div></li>')
+            li.attr 'id', 'image' + index
+            $('.img-preview').append li
 
+            formData = new FormData
+            formData.append 'file', convertBase64UrlToBlob(base64)
+            formData.append('token', token);
+            formData.append('key',key)
+            xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://up.qiniu.com', true);
+            xhr.send(formData);
+            xhr.onreadystatechange = (response)->
+              if (xhr.readyState == 4 && xhr.status == 200 && xhr.responseText != "")
+                blkRet = JSON.parse(xhr.responseText);
+                showphoto photo
+              else if (xhr.status != 200 && xhr.responseText)
+                blkRet = JSON.parse(xhr.responseText);
+                console.log(blkRet);
+        )
+
+
+  showphoto =(photo)->
+    $('#image' + $photos).removeClass 'weui-uploader__file_status'
+    $('#image' + $photos).attr 'style', 'background-image:url(' + photo + ')'
+    input = document.createElement('input')
+    input.name = 'case[photos_attributes][' + $photos + '][image]'
+    input.value = photo
+    input.type = 'hidden'
+    $('.img-preview').append input
+    $photos = $photos + 1
 
   $('#case-file').change ->
 

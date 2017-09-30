@@ -55,7 +55,11 @@ Rails.application.routes.draw do
     end
     resources :users
     resources :cases
-    resources :photos
+    resources :photos do
+      collection do
+        post :gettoken
+      end
+    end
 
 
   end
