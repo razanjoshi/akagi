@@ -1,0 +1,74 @@
+<details>
+<summary>图片上传</summary>
+<div class="container kv-main">
+
+            <form enctype="multipart/form-data">
+                <div class="form-group">
+                    <input id="smfile" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-max-file-count="10" name="file" accept="image/*">
+                </div>
+            </form>
+            <div id="showurl" style="display: none;">
+                <ul id="navTab" class="nav nav-tabs">
+                    <li class="active"><a href="#urlcodes" data-toggle="tab">URL</a></li>
+                    <li><a href="#htmlcodes" data-toggle="tab">HTML</a></li>
+                    <li><a href="#bbcodes" data-toggle="tab">BBCode</a></li>
+                    <li><a href="#markdowncodes" data-toggle="tab">Markdown</a></li>
+                    <li><a href="#deletepanel" data-toggle="tab">Delete Link</a></li>
+                </ul>
+                <div id="navTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="urlcodes">
+                        <pre style="margin-top: 5px;"><code id="urlcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="htmlcodes">
+                        <pre style="margin-top: 5px;"><code id="htmlcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="bbcodes">
+                        <pre style="margin-top: 5px;"><code id="bbcode"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="markdowncodes">
+                        <pre style="margin-top: 5px;"><code id="markdown"></code></pre>
+                    </div>
+                    <div class="tab-pane fade" id="deletepanel">
+                        <pre style="margin-top: 5px;"><code id="deletecode"></code></pre>
+                    </div>
+                </div>
+            </div>
+        <script>
+        $("#smfile").fileinput({
+            uploadUrl: 'http://up.qiniu.com',
+            uploadExtraData: { token: "<%= get_upload_token() %>" },
+            allowedFileExtensions : ['jpeg', 'jpg', 'png', 'gif', 'bmp'],
+            overwriteInitial: false,
+            maxFilesNum: 10,
+        });
+        $('#smfile').on('fileuploaded', function(event, data, previewId, index) {
+            var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
+            photo = 'http://oes1t3t81.bkt.clouddn.com/' + response.key;
+            if(response.key != '') {
+                Editor.cm.replaceSelection("!["+ files[index].name +"](" + photo + ")" + "\n");
+                var input = document.createElement('input')
+                input.name = 'post[photos_attributes][' + index + '][image]'
+                input.value = photo
+                input.type = 'hidden'
+                $('.img-preview').append(input)
+                if ( $("showurl").css("display") ) {
+                    $('#urlcode').append(photo + "\n");
+                    $('#htmlcode').append("&lt;img src=\""+ photo +"\" alt=\""+ files[index].name +"\" title=\""+ files[index].name +"\" /&gt;" + "\n");
+                    $('#bbcode').append("[img]"+ photo +"[/img]" + "\n");
+                    $('#markdown').append("!["+ files[index].name +"](" + photo + ")" + "\n");
+                    //$('#deletecode').append(response.data.delete + "\n");
+
+                } else if (response.key != '') {
+                    $("#showurl").show();
+                    $('#urlcode').append(photo + "\n");
+                    $('#htmlcode').append("&lt;img src=\""+ photo +"\" alt=\""+ files[index].name +"\" title=\""+ files[index].name +"\" /&gt;" + "\n");
+                    $('#bbcode').append("[img]"+ photo +"[/img]" + "\n");
+                    $('#markdown').append("!["+ files[index].name +"](" + photo + ")" + "\n");
+                    //$('#deletecode').append(response.data.delete + "\n");
+                }
+
+            }
+        });
+        </script>
+</div>
+</details>

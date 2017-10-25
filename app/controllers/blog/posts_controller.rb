@@ -8,6 +8,9 @@ class Blog::PostsController < Blog::BaseController
     @post = current_user.posts.build post_params
     if @post.save
       @post.case.update_attribute(:updated_at,Time.zone.now)
+      if params[:is_share] == "1"
+        weibo_share @post
+      end
       flash[:success] = "发表成功!"
     else
       flash[:notice] = "失败!"
@@ -41,9 +44,10 @@ class Blog::PostsController < Blog::BaseController
       redirect_back(fallback_location: root_url)
   end
 
+
   private
   def post_params
-    params.require(:post).permit(:content, :picture, :case_id)
+    params.require(:post).permit(:content, :picture, :case_id, photos_attributes:[:image])
   end
 
   def correct_user

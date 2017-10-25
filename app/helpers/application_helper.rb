@@ -55,4 +55,42 @@ module ApplicationHelper
     puts JSON(@result.body)
   end
 
+  def weibo_share(post)
+
+    uri =  URI.parse("https://api.weibo.com/2/statuses/share.json")
+    content = weibo_content(post)
+    if post.photos.empty?
+      params = {
+        status:content,
+        access_token:session[:access_token]
+                    }
+      res = Net::HTTP.post_form(uri,params)
+    else
+      require 'net/http/post/multipart'
+      tempfile = open(post.photos.first.image);
+      req = Net::HTTP::Post::Multipart.new uri.path,
+        {"pic" => UploadIO.new(tempfile, "image/jpeg", "image.jpg"),
+          "access_token" => session[:access_token],
+          "status" => URI.encode(content)
+        }
+        n = Net::HTTP.new(uri.host, uri.port)
+        n.use_ssl = true
+        n.start do |http|
+          res = http.request(req)
+        end
+    end
+    puts content
+    puts JSON(res.body)
+  end
+
+  def weibo_content(post)
+    content = ""
+    markdown(post.content).to_s.lines.each_with_index do |line, index|
+      unless line.include?('img')
+        content += ActionController::Base.helpers.sanitize(line, tags:[])
+      end
+    end
+    content = "『#{post.case.title}』http://uniclown.com/blog/cases/#{post.case.id}\n" + content;
+  end
+
 end

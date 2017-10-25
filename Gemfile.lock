@@ -285,6 +285,7 @@ GEM
       railties (>= 3.1)
     multi_json (1.12.1)
     multi_xml (0.6.0)
+    multipart-post (2.0.0)
     nenv (0.3.0)
     netrc (0.11.0)
     nio4r (1.2.1)
@@ -448,6 +449,7 @@ DEPENDENCIES
   mini_magick (= 4.5.1)
   minitest-reporters (= 1.1.9)
   momentjs-rails (>= 2.9.0)
+  multipart-post
   pg
   puma (= 3.4.0)
   qiniu

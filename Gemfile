@@ -57,7 +57,7 @@ gem "sanitize",           "~> 2.0",   :require => false
 gem 'weui-rails'
 gem 'qiniu'
 
-
+gem 'multipart-post'
 gem 'pg'
 
 gem 'redis', '~> 3.0'

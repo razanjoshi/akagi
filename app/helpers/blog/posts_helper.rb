@@ -35,4 +35,8 @@ module Blog::PostsHelper
     end
   end
 
+  def get_upload_token()
+    return QiniuUploader.get_token_without_key();
+  end
+
 end

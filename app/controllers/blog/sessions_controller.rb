@@ -22,13 +22,15 @@ class Blog::SessionsController < ApplicationController
   def authorize
     json = weibo_gettoken(params[:code])
     session[:access_token] = json['access_token']
+
     @user = User.find_by(weibo:json['uid'])
     if json['uid'].nil?
       flash.now[:noitce] = "有点不好使，请联系我"
       redirect_to blog_login_path and return
     end
     if @user
-      @user.update avatar:"http://tp1.sinaimg.cn/#{@user.weibo}/180/0/1"
+      userinfo = weibo_userinfo(@user)
+      @user.update avatar:userinfo['avatar_hd']
       log_in @user
       redirect_back_or root_url
     else
@@ -56,7 +58,7 @@ class Blog::SessionsController < ApplicationController
               client_id: "2957192072",
               client_secret: "55874c06581fcc40e9d083c15f984197",
               grant_type: "authorization_code",
-              redirect_uri: "http://uniclown.com/login/authorized",
+              redirect_uri: "#{Settings.visit_url}/login/authorized",
               code: code
               }
     uri = URI("https://api.weibo.com/oauth2/access_token")
