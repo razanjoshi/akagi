@@ -5,5 +5,5 @@
   <p class="content">
     <span class="image <%= (post_counter + 1) % 2 == 1 ? 'right' : 'left' %>">
       <%= image_tag post.get_avatar  %>
-    </span><%= post_content_for(post) %></p>
+    </span><%= sanitize markdown(post.content).to_s %></p>
 </div>

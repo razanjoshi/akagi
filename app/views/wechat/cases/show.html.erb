@@ -30,7 +30,7 @@
         <p>
           <span class="image right">
             <%= image_tag @case.get_avatar  %>
-          </span><%= post_content_for(@case) %></p>
+          </span><%= sanitize markdown(@case.content).to_s %></p>
       </div>
 
 
