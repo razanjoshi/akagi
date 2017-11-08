@@ -28,7 +28,7 @@ gem 'coffee-rails', '4.2.1'
 # gem 'therubyracer', platforms: :ruby
 gem 'commonmarker'
 gem 'html-pipeline'
-
+gem 'unicorn'
 gem "font-awesome-rails"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
