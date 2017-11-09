@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'blog/home#index'
   get '/login/authorized', to:'blog/sessions#authorize'
-
+  get 'sitemap', to:'blog/sitemaps#index'
 
   namespace :api do
     namespace :v1 do
