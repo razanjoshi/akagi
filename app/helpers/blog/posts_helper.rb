@@ -19,12 +19,20 @@ module Blog::PostsHelper
 
   def post_content_for(post)
     image_count = 0
+    ol_flag = false;
     markdown(post.content).to_s.lines.each_with_index do |line, index|
-      if index < 20
+      if index < 20 && ol_flag == false
+        if line.include?('<ol>')
+          concat(sanitize "<br>")
+          ol_flag = true;
+          next
+        end
         concat(sanitize line)
       elsif image_count < 2 and line.include?('img')
         concat(sanitize line)
         image_count = image_count +1
+      elsif line.include?('</ol>')
+        ol_flag = false;
       end
     end
     if markdown(post.content).to_s.lines.count > 20
