@@ -287,6 +287,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mysql2 (0.4.9)
     nenv (0.3.0)
     netrc (0.11.0)
     nio4r (1.2.1)
@@ -455,6 +456,7 @@ DEPENDENCIES
   minitest-reporters (= 1.1.9)
   momentjs-rails (>= 2.9.0)
   multipart-post
+  mysql2
   pg
   puma (= 3.4.0)
   qiniu
@@ -483,4 +485,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.15.1
+   1.16.0
