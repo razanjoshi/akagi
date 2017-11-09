@@ -22,6 +22,7 @@ test:
   <<: *default
 
 production:
+  <<: *default
   username: root
   password: uniclown@returntozero
   database: yggdrasil
