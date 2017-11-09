@@ -9,7 +9,7 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: uniclown@returntozero
+  password: uniclown@hanabi
   database: yggdrasil
 
 development:
@@ -22,4 +22,6 @@ test:
   <<: *default
 
 production:
-  <<: *default
+  username: root
+  password: uniclown@returntozero
+  database: yggdrasil

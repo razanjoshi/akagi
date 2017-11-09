@@ -58,14 +58,13 @@ gem 'weui-rails'
 gem 'qiniu'
 
 gem 'multipart-post'
-gem 'pg'
 
 gem 'redis', '~> 3.0'
 gem 'redis-namespace'
 gem 'weixin_authorize', git: 'https://github.com/wikimo/weixin_authorize.git'
 gem 'weixin_rails_middleware'
 gem 'settingslogic'
-
+gem 'mysql2'
 
 
 
@@ -106,7 +105,7 @@ group :test do
 end
 
 group :production do
-  gem 'mysql2'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
