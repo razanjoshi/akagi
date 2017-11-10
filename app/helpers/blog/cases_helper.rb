@@ -10,12 +10,13 @@ module Blog::CasesHelper
     end
   end
 
-  def case_family_for(thecase)
+  def case_family_for(post)
     content_tag :div do
-      thecase.get_family.each do |acase|
+      post.case.get_family.each do |acase|
         concat(link_to(acase.title+'', [:blog, acase]))
         concat('->')
       end
+      concat(link_to('详情', [:blog, post]))
     end
   end
 

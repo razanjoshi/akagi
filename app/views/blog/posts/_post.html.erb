@@ -1,6 +1,6 @@
 <li id="post-<%= post.id %>">
   <%= image_tag post.get_avatar,class:"gravatar",size:"50x50"  %>
-  <span class="case"><%= case_family_for(post.case) %></span>
+  <span class="case"><%= case_family_for(post) %></span>
   <span class="timestamps">
     <%= format_datetime(post.created_at, '%Y-%m-%d %H:%M:%S') %>
     <%= post_options_for(post) %>
