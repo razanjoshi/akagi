@@ -12,8 +12,8 @@ Rails.application.routes.draw do
           get :get_note
           get :check_note
         end
-
       end
+      post '/dorothy/receive', to:'dorothy#receive'
     end
   end
 

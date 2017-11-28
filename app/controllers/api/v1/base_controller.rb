@@ -12,4 +12,12 @@ class Api::V1::BaseController < ApplicationController
     request.session_options[:skip] = true
   end
 
+  private
+  def api_error(opts = {})
+    render json:{
+      status:opts[:status],
+      result:opts[:result]
+    }
+  end
+
 end

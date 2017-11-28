@@ -79,18 +79,24 @@ module ApplicationHelper
           res = http.request(req)
         end
     end
-    puts content
-    puts JSON(res.body)
+    json = JSON(res.body)
+    if json['error']
+      puts json
+    end
   end
 
   def weibo_content(post)
     content = ""
     markdown(post.content).to_s.lines.each_with_index do |line, index|
-      unless line.include?('img')
+      unless line.include?('img') || content.length > 137
         content += ActionController::Base.helpers.sanitize(line, tags:[])
       end
     end
-    content = "『#{post.case.title}』http://uniclown.com/blog/cases/#{post.case.id}\n" + content;
+    content = "『#{post.case.title}』查看全部-> http://uniclown.com/blog/cases/#{post.case.id}\n" + content;
+    if content.length > 140
+      content = content.lines[0..-2] + '...'
+    end
+    return content
   end
 
 end
