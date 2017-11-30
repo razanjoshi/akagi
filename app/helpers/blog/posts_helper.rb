@@ -1,5 +1,6 @@
 module Blog::PostsHelper
-
+  include ActsAsTaggableOn::TagsHelper
+  
   def post_options_for(post)
     if current_user?(uniclown)
       content_tag :div do
@@ -19,22 +20,28 @@ module Blog::PostsHelper
 
   def post_content_for(post)
     image_count = 0
-    ol_flag = false;
-    markdown(post.content).to_s.lines.each_with_index do |line, index|
+    ol_flag = false
+    content = ""
+    markdown(post.content).lines.each_with_index do |line, index|
       if index < 20 && ol_flag == false
         if line.include?('<ol>')
-          concat(sanitize "<br>")
-          ol_flag = true;
+          #concat(sanitize "<br>")
+          content += "<br>"
+          ol_flag = true
           next
+        else
+          #concat(sanitize line)
+          content += line
         end
-        concat(sanitize line)
       elsif image_count < 2 and line.include?('img')
-        concat(sanitize line)
-        image_count = image_count +1
+        #concat(sanitize line)
+        content += line
+        image_count += 1
       elsif line.include?('</ol>')
-        ol_flag = false;
+        ol_flag = false
       end
     end
+    concat(sanitize content)
     if markdown(post.content).to_s.lines.count > 20
       content_tag :p, class:'tiy' do
         link_to '查看全文', [:blog, post], class:"more"
@@ -45,6 +52,15 @@ module Blog::PostsHelper
 
   def get_upload_token()
     return QiniuUploader.get_token_without_key();
+  end
+
+  def post_title_for(post)
+    title = markdown(post.content).to_s.lines[0]
+    if title.include? '<h'
+      return title[4..-7]
+    else
+      return post.case.title
+    end
   end
 
 end

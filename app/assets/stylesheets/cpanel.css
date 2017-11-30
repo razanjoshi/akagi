@@ -1,5 +1,9 @@
 /*
  *= require_self
  *= require font-awesome
+ *= require ./blog/editormd
+ *= require ./blog/editormd.logo
+ *= require ./blog/fileinput
  *= require ./cpanel/style
+ *= require bootstrap-tagsinput
  */

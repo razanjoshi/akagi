@@ -12,8 +12,15 @@
     </div>
 
     <div class="col-md-8 main">
-      <div class="main-hd">
-        <h1><%= @case.title%></h1>
+      <div class="main-hd case">
+        <div class="case_hd" data-background="image" data-src="<%= @case.logo || 'http://oes1t3t81.bkt.clouddn.com//blog/1509853456564.JPG' %>"  >
+          <%= link_to @case.title, [:blog, @case] , class:"case_title" %>
+          <p class="body"><% case_content_for(@case) %></p>
+          <div class="filter">
+          </div>
+        </div>
+
+
         <span class="edit">
           <% if logged_in? %>
               <%=  link_to "edit", [:edit, :blog, @case]  %>|<%=  link_to "delete", [:blog, @case],method: :delete,data:{confirm:"我再确认一遍，你是否需要删除"}  %>

@@ -13,25 +13,15 @@
       </div>
       <div class="main-bd">
         <ul class="cases">
-
           <% @cases.each do |thecase| %>
-            <div class="case">
-
-              <li id="case-<%= thecase.id %>">
-                <%= link_to thecase.title, [:blog, thecase] , id:"title"%>
-                <span class="timestamps">
-                  Edited
-                  <%= format_datetime(thecase.updated_at) %>
-                </span>
-                <p class="body"><% case_content_for(thecase) %></p>
-                <span class="posts">
-                  <ul class="posts">
-                    <%= render thecase.posts[0..2] %>
-                  </ul>
-                </span>
-
+              <li class="case" id="case-<%= thecase.id %>">
+                <div class="case_hd" data-background="image" data-src="<%= thecase.logo %>"  >
+                  <%= link_to thecase.title, [:blog, thecase] , class:"case_title" %>
+                  <p class="body"><% case_content_for(thecase) %></p>
+                  <div class="filter">
+                  </div>
+                </div>
               </li>
-            </div>
           <% end %>
           <%= will_paginate @cases %>
         </ul>

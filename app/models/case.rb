@@ -28,6 +28,8 @@ class Case < ApplicationRecord
 
   before_save :set_level
 
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
+
   def set_level
     if self.parent
       self.level = self.parent.level + 1
@@ -63,7 +65,7 @@ class Case < ApplicationRecord
 
   def logo
     if self.photos.empty?
-      return nil
+      return 'http://oes1t3t81.bkt.clouddn.com//blog/1511962137717.JPG'
     else
       self.photos.first.image
     end

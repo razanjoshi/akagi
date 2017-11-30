@@ -65,7 +65,8 @@ gem 'weixin_authorize', git: 'https://github.com/wikimo/weixin_authorize.git'
 gem 'weixin_rails_middleware'
 gem 'settingslogic'
 gem 'mysql2'
-
+gem 'acts-as-taggable-on', '~> 4.0' #标签
+gem 'bootstrap-tagsinput-rails' #标签
 
 
 group :development, :test do

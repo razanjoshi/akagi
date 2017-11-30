@@ -53,7 +53,10 @@ class Cpanel::CasesController < Cpanel::BaseController
 
 	private
 	def case_params
-		params.require(:case).permit(:level, :title, :content, :parent_id)
+		if params[:post]
+			params[:case] = params[:case].merge params[:post]
+		end
+		params.require(:case).permit(:level, :title, :content, :parent_id, :tag_list, photos_attributes:[:image])
 	end
 
 	def set_case

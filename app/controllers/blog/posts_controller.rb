@@ -22,7 +22,14 @@ class Blog::PostsController < Blog::BaseController
     end
   end
 
+  def index
+    @tags = Post.tag_counts_on(:tags)
+    @tag = params[:tag]
+    @posts = Post.tagged_with(@tag).paginate(page: params[:page], per_page: 10)
+  end
+
   def edit
+
   end
 
   def update
@@ -47,7 +54,7 @@ class Blog::PostsController < Blog::BaseController
 
   private
   def post_params
-    params.require(:post).permit(:content, :picture, :case_id, photos_attributes:[:image])
+    params.require(:post).permit(:content, :picture, :case_id, :tag_list, photos_attributes:[:image])
   end
 
   def correct_user

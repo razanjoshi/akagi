@@ -35,7 +35,7 @@ class Wechat::CasesController < Wechat::BaseController
   end
 
   def case_param
-    params.require(:case).permit(:nickname,:content, :title, :types, photos_attributes:[:image])
+    params.require(:case).permit(:nickname, :content, :title, :types, photos_attributes:[:image])
   end
 
 end

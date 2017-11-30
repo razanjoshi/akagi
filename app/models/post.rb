@@ -27,6 +27,7 @@ class Post < ApplicationRecord
   before_create :default_case
   before_save :default_case
 
+  acts_as_taggable
 
   def get_nickname
     self.types == Post::TYPES_OF_ANOY ? self.nickname : self.user.decode_nickname

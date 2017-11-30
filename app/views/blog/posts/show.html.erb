@@ -1,4 +1,4 @@
-<% provide(:title,"Post") %>
+<% provide(:title, post_title_for(@post)) %>
 
 <%= render partial:"blog/public/header", locals:{ str: "posts" } %>
 

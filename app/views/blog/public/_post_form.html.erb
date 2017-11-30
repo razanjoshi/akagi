@@ -1,98 +1,99 @@
 <div class="form-box">
-<%= form_for([:blog, post], html: { class: "form-horizontal" }) do |f| %>
+  <%= form_for([:blog, post], html: { class: "form-horizontal" }) do |f| %>
     <div id="editormd">
         <%= f.label :body %>
         <%= f.text_area :content, placeholder:"Compose new micropost..." %>
 
     </div>
-    <script type="text/javascript">
-    $(function() {
-       Editor = editormd("editormd", {
-           width: "100%",
-           height: 300,
-           path : '    /editormdlib/',
-           watch : false,
-           toolbarIcons : function() {
-               // Or return editormd.toolbarModes[name]; // full, simple, mini
-               // Using "||" set icons align right.
-               return ["undo", "redo", "|", "bold", "hr", "image", "|", "testIcon",  "faicon", "||", "watch", "fullscreen", "preview"]
-           },
-           // toolbarIcons : "full", // You can also use editormd.toolbarModes[name] default list, values: full, simple, mini.
-           toolbarIconsClass : {
-               testIcon : "fa-gears"  // 指定一个FontAawsome的图标类
-           },
 
-           // 用于增加自定义工具栏的功能，可以直接插入HTML标签，不使用默认的元素创建图标
-           toolbarCustomIcons : {
-               file   : "<input type=\"file\" accept=\".md\" />",
-               faicon : "<i class=\"fa fa-star\" onclick=\"alert('faicon');\"></i>"
-           },
-
-           // 自定义工具栏按钮的事件处理
-           toolbarHandlers : {
-               /**
-                * @param {Object}      cm         CodeMirror对象
-                * @param {Object}      icon       图标按钮jQuery元素对象
-                * @param {Object}      cursor     CodeMirror的光标对象，可获取光标所在行和位置
-                * @param {String}      selection  编辑器选中的文本
-                */
-               testIcon : function(cm, icon, cursor, selection) {
-
-                   //var cursor    = cm.getCursor();     //获取当前光标对象，同cursor参数
-                   //var selection = cm.getSelection();  //获取当前选中的文本，同selection参数
-
-                   // 替换选中文本，如果没有选中文本，则直接插入
-                   cm.replaceSelection("[" + selection + ":testIcon]");
-
-                   // 如果当前没有选中的文本，将光标移到要输入的位置
-                   if(selection === "") {
-                       cm.setCursor(cursor.line, cursor.ch + 1);
-                   }
-
-                   // this == 当前editormd实例
-                   console.log("testIcon =>", this, cm, icon, cursor, selection);
-               },
-
-           },
-
-           lang : {
-               toolbar : {
-                   file : "上传文件",
-                   testIcon : "自定义按钮testIcon",  // 自定义按钮的提示文本，即title属性
-                   testIcon2 : "自定义按钮testIcon2",
-                   undo : "撤销 (Ctrl+Z)"
-               }
-           },
-
-           onload : function(){
-               $("[type=\"file\"]").bind("change", function(){
-                   //alert($(this).val());
-                   //testEditor.cm.replaceSelection($(this).val());
-                   //console.log($(this).val(), testEditor);
-               });
-           }
-       });
-   });
-
-    </script>
     <%= f.hidden_field :case_id, value:post.case_id %>
-    <div class="img-preview">
-
-    </div>
+    <div class="img-preview"></div>
     <div class="radio-beauty-container">
-        <label>
-            <span class="radio-name">分享到微博</span>
-            <input type="radio" name="is_share" id="is_share" value="1" hidden/>
-            <label for="radioName1" class="radio-beauty"></label>
-        </label>
-        <label>
-            <span class="radio-name">不分享</span>
-            <input type="radio" name="is_share" id="is_share" value="0" checked hidden/>
-            <label for="radioName2" class="radio-beauty"></label>
-        </label>
+      <label>
+        <span class="radio-name">分享到微博</span>
+        <input type="radio" name="is_share" id="is_share" value="1" hidden/>
+        <label for="radioName1" class="radio-beauty"></label>
+      </label>
+      <label>
+        <span class="radio-name">不分享</span>
+        <input type="radio" name="is_share" id="is_share" value="0" checked hidden/>
+        <label for="radioName2" class="radio-beauty"></label>
+      </label>
     </div>
-
+    <%= f.text_field :tag_list, 'data-role'=>'tagsinput', value: post.case.tag_list.join(',') %>
     <%= f.submit "Post", class:"btn btn-primary" %>
-<% end %>
+  <% end %>
 </div>
 <%= render partial:"blog/public/photo" %>
+
+
+<script type="text/javascript">
+$(function() {
+   Editor = editormd("editormd", {
+       width: "100%",
+       height: 300,
+       path : '    /editormdlib/',
+       watch : false,
+       toolbarIcons : function() {
+           // Or return editormd.toolbarModes[name]; // full, simple, mini
+           // Using "||" set icons align right.
+           return ["undo", "redo", "|", "bold", "hr", "image", "|", "testIcon",  "faicon", "||", "watch", "fullscreen", "preview"]
+       },
+       // toolbarIcons : "full", // You can also use editormd.toolbarModes[name] default list, values: full, simple, mini.
+       toolbarIconsClass : {
+           testIcon : "fa-gears"  // 指定一个FontAawsome的图标类
+       },
+
+       // 用于增加自定义工具栏的功能，可以直接插入HTML标签，不使用默认的元素创建图标
+       toolbarCustomIcons : {
+           file   : "<input type=\"file\" accept=\".md\" />",
+           faicon : "<i class=\"fa fa-star\" onclick=\"alert('faicon');\"></i>"
+       },
+
+       // 自定义工具栏按钮的事件处理
+       toolbarHandlers : {
+           /**
+            * @param {Object}      cm         CodeMirror对象
+            * @param {Object}      icon       图标按钮jQuery元素对象
+            * @param {Object}      cursor     CodeMirror的光标对象，可获取光标所在行和位置
+            * @param {String}      selection  编辑器选中的文本
+            */
+           testIcon : function(cm, icon, cursor, selection) {
+
+               //var cursor    = cm.getCursor();     //获取当前光标对象，同cursor参数
+               //var selection = cm.getSelection();  //获取当前选中的文本，同selection参数
+
+               // 替换选中文本，如果没有选中文本，则直接插入
+               cm.replaceSelection("[" + selection + ":testIcon]");
+
+               // 如果当前没有选中的文本，将光标移到要输入的位置
+               if(selection === "") {
+                   cm.setCursor(cursor.line, cursor.ch + 1);
+               }
+
+               // this == 当前editormd实例
+               console.log("testIcon =>", this, cm, icon, cursor, selection);
+           },
+
+       },
+
+       lang : {
+           toolbar : {
+               file : "上传文件",
+               testIcon : "自定义按钮testIcon",  // 自定义按钮的提示文本，即title属性
+               testIcon2 : "自定义按钮testIcon2",
+               undo : "撤销 (Ctrl+Z)"
+           }
+       },
+
+       onload : function(){
+           $("[type=\"file\"]").bind("change", function(){
+               //alert($(this).val());
+               //testEditor.cm.replaceSelection($(this).val());
+               //console.log($(this).val(), testEditor);
+           });
+       }
+   });
+ });
+
+</script>

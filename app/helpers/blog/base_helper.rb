@@ -1,16 +1,16 @@
 module Blog::BaseHelper
 
   def full_title(page_title = '')
-    base_title = "Akagi Project In UniClown"
+    base_title = "Akagi Project On UniClown"
     if page_title.empty?
-        base_title
+      base_title
     else
-        page_title + " | " + base_title
+      page_title + " | " + base_title
     end
   end
 
   def top_b_navbar(str)
-    top_b_home(str) +   top_b_case(str) + top_b_login(str)
+    top_b_home(str) + top_b_case(str) + top_b_post(str) + top_b_login(str)
   end
 
   def top_b_home(str)
@@ -20,11 +20,17 @@ module Blog::BaseHelper
     end
   end
 
-
   def top_b_case(str)
     cls = "cases" == str ? "active" : ""
     content_tag :li, class: cls do
       link_to "最近动向", [:blog, :cases]
+    end
+  end
+
+  def top_b_post(str)
+    cls = "posts" == str ? "active" : ""
+    content_tag :li, class: cls do
+      link_to "世界之树", "/blog/posts"
     end
   end
 

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :cpanel do
 
-    root 'base#index'
+    root 'cases#index'
 
     resources :posts
     resources :users

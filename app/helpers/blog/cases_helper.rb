@@ -11,7 +11,7 @@ module Blog::CasesHelper
   end
 
   def case_family_for(post)
-    content_tag :div do
+    content_tag :span, class:'case_family' do
       post.case.get_family.each do |acase|
         concat(link_to(acase.title+'', [:blog, acase]))
         concat('->')

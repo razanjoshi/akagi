@@ -6,17 +6,20 @@
 <div class="row">
   <div class="col-md-12">
     <%= form_for [:blog, @post] do |f| %>
+      <div id="editormd">
+        <%= f.label :content %>
+        <%= f.text_area :content, class: 'form-control',style:"display:none;" %>
+      </div>
+      <%= f.text_field :tag_list, 'data-role'=>'tagsinput', value: @post.tag_list.join(',') %>
 
-    <div id="editormd">
-      <%= f.label :content %>
-      <%= f.text_area :content, class: 'form-control',style:"display:none;" %>
-    </div>
-
-    <%= f.submit "编辑提交", class:"btn btn-primary" %>
+      <%= f.submit "编辑提交", class:"btn btn-primary"%>
     <% end %>
-
     <%= render partial:"blog/public/photo" %>
+
   </div>
 
 
 </div>
+<script>
+
+</script>
