@@ -67,6 +67,7 @@ gem 'settingslogic'
 gem 'mysql2'
 gem 'acts-as-taggable-on', '~> 4.0' #标签
 gem 'bootstrap-tagsinput-rails' #标签
+gem 'yajl-ruby', '~> 1.3.1' #github安全提示
 
 
 group :development, :test do
