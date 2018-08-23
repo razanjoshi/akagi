@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128082923) do
+ActiveRecord::Schema.define(version: 20180823134920) do
 
   create_table "cases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -22,6 +22,11 @@ ActiveRecord::Schema.define(version: 20171128082923) do
     t.integer  "parent_id"
     t.string   "nickname",   limit: 50
     t.integer  "types",                    default: 1
+    t.string   "logo",       limit: 150
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.integer  "status",                   default: 0
+    t.string   "place",      limit: 50
     t.index ["user_id", "updated_at"], name: "index_cases_on_user_id_and_updated_at", using: :btree
     t.index ["user_id"], name: "index_cases_on_user_id", using: :btree
   end
@@ -55,6 +60,8 @@ ActiveRecord::Schema.define(version: 20171128082923) do
     t.integer  "case_id"
     t.string   "nickname",   limit: 50
     t.integer  "types",                    default: 1
+    t.string   "title",      limit: 150
+    t.integer  "status",                   default: 1
     t.index ["case_id"], name: "index_posts_on_case_id", using: :btree
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree

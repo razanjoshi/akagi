@@ -1,13 +1,56 @@
-<footer class="footer">
-    <small>
-        The <a href="#">Akagi Project</a>
-        By UniClown
-    </small>
-    <nav>
-        <ul>
-            <li><%= link_to "About", about_path %></li>
-            <li><%= link_to "Contact", contact_path %></li>
-            <li><a href="#">News</a></li>
-        </ul>
-    </nav>
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="inner-wide">
+      <div class="offsite-links">
+        <a href="https://twitter.com/uniclown" target="_blank">
+          <span class="icon-twitter" aria-hidden="true"></span>
+          <span class="screen-reader-text">Twitter</span>
+        </a>
+        <a href="https://www.facebook.com/clown139880" target="_blank">
+          <span class="icon-facebook" aria-hidden="true"></span>
+          <span class="screen-reader-text">Facebook</span>
+        </a>
+        <a href="https://plus.google.com/u/0/101174631701426584628" target="_blank">
+          <span class="icon-google" aria-hidden="true"></span>
+          <span class="screen-reader-text">Google+</span>
+        </a>
+        <a href="https://github.com/clown139880" target="_blank">
+          <span class="icon-github" aria-hidden="true"></span>
+          <span class="screen-reader-text">GitHub</span>
+        </a>
+        <a href="https://weibo.com/crownclown" target="_blank">
+          <span class="uni-weibo" aria-hidden="true"></span>
+          <span class="screen-reader-text">Weibo</span>
+        </a>
+        <a href="http://bangumi.tv/user/46924"  target="_blank">
+          <span class="uni-bangumi" aria-hidden="true"></span>
+          <span class="screen-reader-text">Bangumi</span>
+        </a>
+        <a href="https://uniclown.com/blog/rss/" target="_blank">
+          <span class="icon-feed" aria-hidden="true"></span>
+          <span class="screen-reader-text">RSS</span>
+        </a>
+      </div>
+      <!-- .offsite-links -->
+      <a href="#page" class="top-link square">
+        <span class="icon-up-custom" aria-hidden="true"></span>
+        <span class="screen-reader-text">Back to the top</span>
+      </a>
+    </div>
+    <!-- .inner -->
+  </div>
+  <!-- .footer-top -->
+  <div class="site-info inner-wide">
+    <p>
+      <a href="<%= Settings.visit_url %>">Akagi On UniClown</a>
+      © 2018
+      <br>
+    </p>
+  </div>
+  <!-- .site-info -->
 </footer>
+<!-- .site-footer -->
+<%= render partial: "/blog/public/search" %>
+<!-- .site-search -->
+<div class="overlay"></div>
+</div>

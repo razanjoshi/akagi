@@ -2,7 +2,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <%= render partial: 'sidebar' %>
+    <%= render partial: 'cpanel/public/sidebar' %>
     <div class="col-sm-9 col-md-10 main">
       <div class="main-hd">
         <h5>所有案件</h5>
@@ -15,14 +15,19 @@
               <thead>
                 <tr>
                   <th>名称</th>
-                  <th>等级</th>
-                  <th>父级</th>
+                  <th>开始于</th>
+                  <th>结束于</th>
+                  <th>地点</th>
+                  <th>状态</th>
+                  <th>分类</th>
                   <th>操作</th>
                 </tr>
               </thead>
+
               <tbody id="cases-body">
                 <%= render partial: 'case', collection: @cases, as: :thecase, locals: { page: params[:page] } %>
               </tbody>
+
             </table>
             <ul class="pagination pull-right">
               <%= will_paginate @cases %>

@@ -1,15 +1,39 @@
-<div class="col-sm-3 col-md-2 sidebar hidden-xs">
-  <section class="user_info">
-    <%= gravatar_for(uniclown,size:200) %>
-  </section>
-  <section>
-    <h1><%= uniclown.name %></h1>
-  </section>
-  <section>
-    <div class="tree well">
-      <ul>
-      <%= render partial:'blog/cases/case', collection: Case.level(1), as: :thecase %>
-      </ul>
+<aside class="sidebar" aria-label="Sidebar">
+  <div class="sidebar-scrollable">
+    <div class="widget-area">
+      <nav class="site-navigation" aria-label="Main Menu">
+        <h2 class="screen-reader-text">Index</h2>
+        <ul class="menu">
+          <%= top_b_navbar("") %>
+        </ul>
+        <!-- .menu -->
+      </nav>
+      <!-- .site-navigation -->
+
+      <section class="widget widget-text">
+        <h2 class="widget-title">Akagi</h2>
+        <p>『黑暗中降临的天才』赤木茂『只有赌上自己的一切，才有胜利的可能性』的不要命活法感染了我，赤木AKAGI就如同破釜成舟一样的意义，拼上自己的一切去战斗。</p>
+        <p>UniClownTheWorld系统的博客站点，从运营这个域名开始，博客系统已经死亡了三次，曾经写过的无数文字都无法找回，就想不可回到的过去一样，但即使如此，我也要依旧前行。</p>
+      </section>
+      <!-- .widget -->
+      <section class="widget widget-text">
+        <h2 class="widget-title">Me</h2>
+        <p>啊呀啊呀，我最讨厌写自我介绍了，这家伙很懒，什么都没留下。</p>
+        <ul class="contacts">
+          <li>
+            <span class="icon icon-envelope" aria-hidden="true"></span>
+            clown139880@gmail.com
+          </li>
+        </ul>
+      </section>
+      <!-- .widget -->
     </div>
-  </section>
-</div>
+    <!-- .widget-area -->
+    <a class="sidebar-toggle" href="/blog">
+      <span class="screen-reader-text">Close Sidebar</span>
+      <span aria-hidden="true" class="icon-close-custom"></span>
+    </a>
+  </div>
+  <!-- .sidebar-scrollable -->
+</aside>
+<!-- .sidebar -->

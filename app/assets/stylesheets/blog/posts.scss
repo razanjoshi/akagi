@@ -1,20 +1,11 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-@import "bootstrap-sprockets";
-@import "bootstrap";
-/* posts */
-/* mixins, variables, etc. */
-$gray-medium-light: #eaeaea;
-
 .posts,.post {
     list-style: none;
     padding: 0;
-    li {
-        padding: 10px 0;
-        border-top: 7px solid #e9686b;
-        margin-bottom: 10px;
-        min-height: 200px;
+    li.post {
+      padding: 10px 0;
+      border-top: 7px solid #e9686b;
+      margin-bottom: 10px;
+      min-height: 200px;
     }
     .case_family {
       border-left: 4px solid #e9686b;
@@ -47,7 +38,7 @@ $gray-medium-light: #eaeaea;
     }
     .timestamps {
         float: right;
-        color: $gray-light;
+        color: #eaeaea;
         display: block;
         margin-left: 60px;
     }

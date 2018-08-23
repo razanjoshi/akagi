@@ -3,7 +3,7 @@ class Cpanel::CasesController < Cpanel::BaseController
 	before_action :set_case, only: [:edit, :update, :destroy]
 
 	def index
-    @cases = Case.level(1).paginate(page: params[:page])
+    @cases = Case.paginate(page: params[:page])
   end
 
 	def new
@@ -56,7 +56,7 @@ class Cpanel::CasesController < Cpanel::BaseController
 		if params[:post]
 			params[:case] = params[:case].merge params[:post]
 		end
-		params.require(:case).permit(:level, :title, :content, :parent_id, :tag_list, photos_attributes:[:image])
+		params.require(:case).permit(:title, :content, :place, :logo, :started_at, :ended_at, :tag_list)
 	end
 
 	def set_case

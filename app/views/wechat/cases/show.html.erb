@@ -24,7 +24,7 @@
 
       <div class="box">
         <h4>
-          <%= @case.get_nickname %>
+          <%= @case.get_username %>
           <span>reply at
           </span><%= format_datetime(@case.created_at) %></h4>
         <p>
@@ -39,10 +39,6 @@
           <%= render partial:'post', collection:@posts, as: :post %>
         </div>
       </div>
-
-
-
-
 
       <section class="wrapper style1 align-center">
         <div class="inner medium">
@@ -76,8 +72,8 @@
 
 <script type="text/javascript">
   wx.ready(function () {
-    wx.onMenuShareAppMessage({title: "<%= @case.title %>", desc: "<%= wechat_desc_for_case(@case) %>", link: "<%= Settings.visit_url %>/wechat/cases/<%= @case.id %>", imgUrl: "<%= @case.photos.first.image %>", success: function () {}});
-    wx.onMenuShareTimeline({title: "<%= @case.title %>", link: "<%= Settings.visit_url %>/wechat/cases/<%= @case.id %>", imgUrl: "<%= @case.photos.first.image %>", success: function () {}});
+    wx.onMenuShareAppMessage({title: "<%= @case.title %>", desc: "<%= wechat_desc_for_case(@case) %>", link: "<%= Settings.visit_url %>/wechat/cases/<%= @case.id %>", imgUrl: "<%= @case.logo %>", success: function () {}});
+    wx.onMenuShareTimeline({title: "<%= @case.title %>", link: "<%= Settings.visit_url %>/wechat/cases/<%= @case.id %>", imgUrl: "<%= @case.logo %>", success: function () {}});
   });
 
   wx.error(function (res) {

@@ -1,37 +1,142 @@
-@font-face {font-family: "cmFont";
-  src: font-url('cmfont.eot');
-  src: url('cmfont.eot#iefix') format('embedded-opentype'),
-  font-url('cmfont.woff') format('woff'),
-  font-url('cmfont.ttf') format('truetype'),
-  font-url('cmfont.svg#cmfont') format('svg');
+@font-face {
+  font-family: 'icomoon';
+  src: font-url('icomoon.eot');
+  src: font-url('icomoon.eot') format('embedded-opentype'), font-url('icomoon.ttf') format('truetype'), font-url('icomoon.woff') format('woff'), font-url('icomoon.svg?1lejkn#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-[class^="cm-"]:before, [class*="cm-"]:before{
-  font-family:"iconfont" !important;
-  font-size:16px;
-  font-style:normal;
+[class^="uni-"],
+[class*=" uni-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-.cm-data:before { content: "\e600"; }
-.cm-shop:before { content: "\e601"; }
-.cm-order:before { content: "\e602"; }
-.cm-product:before { content: "\e603"; }
-.cm-qr:before { content: "\e604"; }
-.cm-cancle:before { content: "\e605"; }
-.cm-down:before { content: "\e606"; }
-.cm-advert:before { content: "\e607"; }
-.cm-point:before { content: "\e608"; }
-.cm-chart:before { content: "\e609"; }
-.cm-freshen:before { content: "\e60a"; }
-.cm-notice:before { content: "\e60b"; }
-.cm-left:before { content: "\e60c"; }
-.cm-edit:before { content: "\e60d"; }
-.cm-right:before { content: "\e60e"; }
-.cm-plus:before { content: "\e60f"; }
-.cm-calendar:before { content: "\e610"; }
-.cm-detail:before { content: "\e611"; }
-.cm-psw:before { content: "\e612"; }
-.cm-user:before { content: "\e613"; }
-.cm-close:before { content: "\e614"; }
+
+.uni-print:before {
+  content: "\78";
+}
+
+.uni-dingwei:before {
+  content: "\e70d";
+}
+
+.uni-jingjirenguanli:before {
+  content: "\e61f";
+}
+
+.uni-weituoguanli:before {
+  content: "\e643";
+}
+
+.uni-weituochaxun:before {
+  content: "\e613";
+}
+
+.uni-addition:before {
+  content: "\e6e0";
+}
+
+.uni-collection_fill:before {
+  content: "\e6ea";
+}
+
+.uni-collection:before {
+  content: "\e6eb";
+}
+
+.uni-coordinates:before {
+  content: "\e6ec";
+}
+
+.uni-createtask:before {
+  content: "\e6ef";
+}
+
+.uni-delete_fill:before {
+  content: "\e6f2";
+}
+
+.uni-editor:before {
+  content: "\e6f5";
+}
+
+.uni-message:before {
+  content: "\e70c";
+}
+
+.uni-qrcode:before {
+  content: "\e71c";
+}
+
+.uni-share:before {
+  content: "\e729";
+}
+
+.uni-task:before {
+  content: "\e732";
+}
+
+.uni-time:before {
+  content: "\e735";
+}
+
+.uni-dianhua:before {
+  content: "\e624";
+}
+
+.uni-packup:before {
+  content: "\e749";
+}
+
+.uni-unfold:before {
+  content: "\e74a";
+}
+
+.uni-map:before {
+  content: "\e668";
+}
+
+.uni-shoujibangding:before {
+  content: "\e626";
+}
+
+.uni-list:before {
+  content: "\e602";
+}
+
+.uni-close:before {
+  content: "\e605";
+}
+
+.uni-back:before {
+  content: "\e60c";
+}
+
+.uni-next:before {
+  content: "\e60e";
+}
+
+.uni-plus:before {
+  content: "\e60f";
+}
+
+.uni-bangumi:before {
+  content: "\e95b";
+}
+
+.uni-search:before {
+  content: "\e986";
+}
+
+.uni-weibo:before {
+  content: "\ea9a";
+}

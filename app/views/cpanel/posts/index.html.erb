@@ -1,0 +1,36 @@
+<%= render partial: 'cpanel/public/header', locals: { str: 'posts' } %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render partial: 'cpanel/public/sidebar' %>
+    <div class="col-sm-9 col-md-10 main">
+      <div class="main-hd">
+        <h5>所有案件</h5>
+      </div>
+      <div class="main-hd">
+        <%= render partial: 'cpanel/public/flash_notice', locals: { } %>
+        <div class="tab-content">
+          <div class="tab-pane active" id="all-order">
+            <table class="table table-cmcm">
+              <thead>
+                <tr>
+                  <th>名称</th>
+                  <th>事件</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+
+              <tbody id="posts-body">
+                <%= render partial: 'post', collection: @posts, as: :post, locals: { page: params[:page] } %>
+              </tbody>
+
+            </table>
+            <ul class="pagination pull-right">
+              <%= will_paginate @posts %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

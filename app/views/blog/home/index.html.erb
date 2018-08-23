@@ -1,25 +1,29 @@
-<% provide(:title,"Home") %>
+<% provide(:title, "Home") %>
+
+<% provide(:bodycls, "home-template") %>
 
 <%= render partial:"blog/public/header", locals:{ str: "home" } %>
 
 <%= render 'blog/public/flash_notice' %>
 
-
-<div class="container-fluid">
-  <div class="row">
-    <%= render partial: 'sidebar' %>
-
-    <div class="col-md-8 main">
-      <div class="main-hd">
-        <h3>即使如此，小镇依然转动不停。</h3>
-        <%= post_form(@post) %>
+<div id="page" class="site">
+  <main class="site-main">
+    <div class="site-content inner-wide">
+      <!-- .cover -->
+      <div class="post-grid">
+        <%= render partial: "blog/cases/case", collection: @cases, as: :everycase %>
+        <!-- .post -->
       </div>
-      <div class="main-bd">
-        <div class="posts">
-          <%= render partial: 'blog/posts/post', collection: @posts, as: :post %>
-        </div>
-      </div>
-      <%= will_paginate @posts, class: "pull-right" %>
+      <!-- .post-grid -->
+      <%= will_paginate @cases, :page_links => false %>
     </div>
-  </div>
-</div>
+    <!-- .site-content -->
+  </main>
+  <!-- .site-main -->
+
+  <%= render partial: "blog/public/sidebar" %>
+
+  <%= render partial: "blog/public/footer_widgets" %>
+  <!-- .footer-widgets -->
+  <%= render partial: "blog/public/footer" %>
+  <!-- #page -->

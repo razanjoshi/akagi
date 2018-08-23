@@ -1,6 +1,6 @@
 module Blog::PostsHelper
   include ActsAsTaggableOn::TagsHelper
-  
+
   def post_options_for(post)
     if current_user?(uniclown)
       content_tag :div do
@@ -24,7 +24,9 @@ module Blog::PostsHelper
     content = ""
     markdown(post.content).lines.each_with_index do |line, index|
       if index < 20 && ol_flag == false
-        if line.include?('<ol>')
+        if index == 0 && line.include?('<h')
+          next
+        elsif line.include?('<ol>')
           #concat(sanitize "<br>")
           content += "<br>"
           ol_flag = true
@@ -43,8 +45,8 @@ module Blog::PostsHelper
     end
     concat(sanitize content)
     if markdown(post.content).to_s.lines.count > 20
-      content_tag :p, class:'tiy' do
-        link_to '查看全文', [:blog, post], class:"more"
+      content_tag :p, class:'read-more' do
+        link_to 'Read More', [:blog, post], class:"button"
       end
     else
     end
@@ -54,13 +56,18 @@ module Blog::PostsHelper
     return QiniuUploader.get_token_without_key();
   end
 
-  def post_title_for(post)
+  def post_title_for(post, needTitle = false)
     title = markdown(post.content).to_s.lines[0]
     if title.include? '<h'
       return title[4..-7]
     else
-      return post.case.title
+      return needTitle ? post.case.title : false;
     end
+  end
+
+  def post_show_logo_for(post)
+    logo = post.photos.empty? ? post.case.logo : post.photos.first.image
+    image_tag logo
   end
 
 end

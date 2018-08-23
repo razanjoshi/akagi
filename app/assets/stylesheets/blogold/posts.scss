@@ -1,0 +1,105 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/* posts */
+/* mixins, variables, etc. */
+$gray-medium-light: #eaeaea;
+
+.posts,.post {
+    list-style: none;
+    padding: 0;
+    li.post {
+      padding: 10px 0;
+      border-top: 7px solid #e9686b;
+      margin-bottom: 10px;
+      min-height: 200px;
+    }
+    .case_family {
+      border-left: 4px solid #e9686b;
+      padding: 4px;
+      margin-left: 10px;
+    }
+    .user{
+        margin-top:5em;
+        padding-top:0;
+    }
+    .content {
+      margin-top: 10px;
+      h1{
+          text-align: left;
+          font-size: 36px;
+      }
+      h2{
+          text-align: left;
+          font-size: 30px;
+      }
+      display: block;
+      //margin-left: 60px;
+      img {
+          display: block;
+          height: auto;
+          max-width: 100%;
+          padding: 5px 0;
+      }
+
+    }
+    .timestamps {
+        float: right;
+        color: $gray-light;
+        display: block;
+        margin-left: 60px;
+    }
+    .gravatar {
+        float: right;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+}
+p.tiy {
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    vertical-align: middle;
+    color: rgb(255, 255, 255);
+    background-color: rgb(233, 104, 107);
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 2px 6px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    font-family: 微软雅黑;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    outline: 0px;
+    padding: 8px 18px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: 0.2s ease-out;
+    border-radius: 2px;
+    a{
+      color:white;
+    }
+}
+.tagcloud_box {
+  margin: 15px auto 10px;
+  height: 200px;
+}
+.post_tag {
+  margin-top: 10px;
+  .label-info {
+    background-color: #e9686b;
+  }
+}
+.btn-primary {
+  color: #fff;
+  background-color: #e9686b;
+  border-color: #e9686b;
+}
+
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }

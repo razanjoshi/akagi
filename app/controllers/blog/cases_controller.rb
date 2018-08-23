@@ -23,14 +23,14 @@ class Blog::CasesController < Blog::BaseController
   def create
     @case = current_user.cases.build(case_params)
     if params[:info][:bangumi].length > 0
-        bangumi(@case,params[:info][:bangumi])
+      bangumi(@case,params[:info][:bangumi])
     end
     if @case.save
-        @case.father(params[:father_id])
-        flash[:success] = "创建成功！"
-        redirect_to @case
+      @case.father(params[:father_id])
+      flash[:success] = "创建成功！"
+      redirect_to @case
     else
-        render 'new'
+      render 'new'
     end
   end
 
@@ -41,10 +41,10 @@ class Blog::CasesController < Blog::BaseController
   def update
     @case = Case.find(params[:id])
     if @case.update_attributes(case_params)
-        flash[:success] = "更新成功，请继续履行救世主的义务"
-        redirect_to @case
+      flash[:success] = "更新成功，请继续履行救世主的义务"
+      redirect_to @case
     else
-        render 'edit'
+      render 'edit'
     end
   end
 
@@ -60,19 +60,18 @@ class Blog::CasesController < Blog::BaseController
 
   private
   def case_params
-      params.require(:case).permit(:body,:title,:tag_list)
-
+    params.require(:case).permit(:body,:title,:tag_list)
   end
 
   def bangumi(newcase,bgm_url)
-      #发送get请求到bgmurl
-      url = URI(bgm_url)
-      body = Net::HTTP.get(url)
-      body = Nokogiri::HTML(body)
-      body = body.css('div#bangumiInfo')
-      newcase.body = body
-      #从request中提取信息
-      #将提取到的信息保存到case.body中
+    #发送get请求到bgmurl
+    url = URI(bgm_url)
+    body = Net::HTTP.get(url)
+    body = Nokogiri::HTML(body)
+    body = body.css('div#bangumiInfo')
+    newcase.body = body
+    #从request中提取信息
+    #将提取到的信息保存到case.body中
   end
 
 

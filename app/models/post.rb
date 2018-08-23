@@ -30,10 +30,8 @@ class Post < ApplicationRecord
   acts_as_taggable
 
   def get_nickname
-    self.types == Post::TYPES_OF_ANOY ? self.nickname : self.user.decode_nickname
+    self.types == Post::TYPES_OF_ANOY ? self.nickname : self.user ? self.user.decode_nickname : "未知"
   end
-
-
 
   def get_avatar
     if self.user.present?
@@ -45,7 +43,27 @@ class Post < ApplicationRecord
     end
   end
 
+  def logo
+    self.photos.empty? ? self.case.logo : self.photos.first.image
+  end
 
+  def status_str
+    case self.status
+    when 0
+      '未开始'
+    else
+      '未知'
+    end
+  end
+
+  def types_str
+    case self.types
+    when 0
+      0
+    else
+      self.types
+    end
+  end
 
   private
 

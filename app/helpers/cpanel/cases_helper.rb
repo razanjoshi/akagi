@@ -21,7 +21,7 @@ module Cpanel::CasesHelper
   end
 
   def select_for_cases
-    return ['新的分支'] + Case.level(1).collect{|p| [p.title, p.id]}
+    return Case.all.collect{|p| [p.title, p.id]}
   end
 
   def case_display_for(parent_id)

@@ -8,15 +8,12 @@ module ApplicationHelper
     end
   end
 
-
-
   def fileread(filename)
     file = File.open(filename,'r')
     content = file.read
     file.close
     return markdown(content)
   end
-
 
   def markdown(content)
     pipeline = HTML::Pipeline.new [
@@ -25,12 +22,10 @@ module ApplicationHelper
     pipeline.call(content)[:output]
   end
 
-
-
-
   def weibo_avatar(user)
     json = weibo_userinfo(user)
   end
+
   def weibo_post(post)
     uri = URI("https://upload.api.weibo.com/2/statuses/upload.json")
     params = {status:URI.encode(post.content),
@@ -39,7 +34,6 @@ module ApplicationHelper
     res = Net::HTTP.post_form(uri,params)
     puts JSON(res.body)
   end
-
 
   def weibo_upload(params)
     uri =  URI.parse("https://upload.api.weibo.com/2/statuses/upload.json")

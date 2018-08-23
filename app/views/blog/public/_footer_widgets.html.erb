@@ -1,0 +1,47 @@
+<aside class="footer-widgets">
+  <div class="inner-wide">
+    <div class="widget-area">
+      <div class="footer-col first">
+        <section class="widget widget-recent-posts">
+          <h2 class="widget-title">Latest Posts</h2>
+          <ul>
+            <% get_latest_posts().each do |post| %>
+              <li>
+                <a href="/blog/posts/<%= post.id %>" class="recent-thumb" style="background-image: url(<%= post.logo %>!315x315);">
+                  <span class="screen-reader-text"><%=  post_title_for(post, true) %></span>
+                </a>
+                <div class="recent-title">
+                  <a href="/blog/posts/<%= post.id %>"><%= post_title_for(post, true) %></a>
+                </div>
+                <div class="recent-date"><%= format_datetime(post.updated_at) %></div>
+              </li>
+            <% end %>
+          </ul>
+        </section>
+        <!-- .widget -->
+      </div>
+      <div class="footer-col middle">
+        <section class="widget widget-tags">
+          <h2 class="widget-title">Tags</h2>
+          <%= get_tags() %>
+        </section>
+        <!-- .widget -->
+      </div>
+      <div class="footer-col last">
+        <section class="widget widget-instagram">
+          <h2 class="widget-title">Pics</h2>
+          <div id="instafeed" class="instagram-feed">
+            <% get_latest_images().each do |image| %>
+            <div class="instagram-item">
+              <a target="_blank" href="<%= url_for([:blog, image.photoable])%>"><img src="<%= image.image %>!315x315" alt="<%= image.title %>"></a>
+            </div>
+            <% end %>
+          </div>
+        </section>
+        <!-- .widget -->
+      </div>
+    </div>
+    <!-- .widget-area -->
+  </div>
+  <!-- .inner-wide -->
+</aside>

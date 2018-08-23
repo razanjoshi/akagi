@@ -4,25 +4,22 @@
 
 <%= render 'blog/public/flash_notice' %>
 
-<div class="container-fluid">
-  <div class="row">
-    <%= render partial: 'blog/home/sidebar' %>
-    <div class="col-md-8 main">
-      <div class="main-bd">
-        <div class="tagcloud_box">
-          <div class="tagcloud">
-            <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-              <%= link_to tag.name, [:blog, :posts, tag: tag.name], :class => css_class %>
-            <% end %>
-          </div>
-        </div>
-        <div class="posts">
-          <%= render partial: 'blog/posts/post', collection: @posts, as: :post %>
+<div id="page" class="site">
+  <main class="site-main">
+    <div class="site-content inner-wide">
+      <div class="tagcloud_box">
+        <div class="tagcloud">
+          <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+            <%= link_to tag.name, [:blog, :posts, tag: tag.name], :class => css_class %>
+          <% end %>
         </div>
       </div>
-      <%= will_paginate @posts, class: "pull-right" %>
+      <div class="post-grid">
+        <%= render partial: 'blog/posts/post', collection: @posts, as: :post %>
+      </div>
     </div>
-  </div>
+    <%= render partial: "blog/public/sidebar" %>
+  </main>
 </div>
 
 <script type="text/javascript">

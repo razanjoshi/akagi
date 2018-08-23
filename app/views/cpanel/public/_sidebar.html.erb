@@ -1,0 +1,22 @@
+<div class="col-sm-3 col-md-2 sidebar hidden-xs">
+  <div class="menu">
+    <dl>
+      <dt><i class="cm-product"></i>事件管理</dt>
+      <dd class="<%= active_sidebar_class(cpanel_cases_path) %>">
+        <%= link_to "所有事件", cpanel_cases_path %>
+      </dd>
+      <dd class="<%= active_sidebar_class([:new, :cpanel, :case]) %>">
+        <%= link_to "新的事件", [:new, :cpanel, :case] %>
+      </dd>
+    </dl>
+    <dl>
+      <dt><i class="cm-product">文章管理</i></dt>
+      <dd class="<%= active_sidebar_class(cpanel_posts_path) %>">
+        <%= link_to "所有文章", cpanel_posts_path %>
+      </dd>
+      <dd class="<%= active_sidebar_class([:new, :cpanel, :post]) %>">
+        <%= link_to "新的文章", [:new, :cpanel, :post] %>
+      </dd>
+    </dl>
+  </div>
+</div>

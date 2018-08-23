@@ -43,6 +43,10 @@ class Blog::PostsController < Blog::BaseController
   end
 
   def show
+    if !params["alone"].present?
+      @next = Post.where("id > ?", @post.id).first
+      @prev = Post.where("id < ?", @post.id).first
+    end
   end
 
   def destroy
