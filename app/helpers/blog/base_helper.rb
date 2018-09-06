@@ -46,10 +46,10 @@ module Blog::BaseHelper
   end
 
   def get_tags
-    tags = Post.tag_counts_on(:tags)
+    tags = Post.tag_counts_on(:tags).order(taggings_count: :desc).take(10)
     content_tag :div, class:'tagcloud' do
       tags.each do |tag|
-        concat(link_to tag, [:blog, :posts, tag: tag])
+        concat(link_to tag, [:blog, :posts, tag: tag.name])
       end
     end
   end

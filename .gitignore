@@ -10,6 +10,8 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/db/*.sql
+/db/*.sql.*
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -26,3 +28,6 @@ shared/log/*
 
 # Ignore upload
 /public/uploads/*
+
+/bin/*
+.DS_store
